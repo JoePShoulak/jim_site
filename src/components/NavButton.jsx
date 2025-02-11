@@ -1,25 +1,6 @@
 /* eslint-disable react/prop-types */ // Why?
 
-import { RED, GOLD } from "../colors";
-
-const darkenColor = (col, amt) => {
-  let usePound = false;
-  if (col[0] === "#") {
-    col = col.slice(1);
-    usePound = true;
-  }
-  let num = parseInt(col, 16);
-  let r = (num >> 16) - amt;
-  let g = ((num >> 8) & 0x00ff) - amt;
-  let b = (num & 0x0000ff) - amt;
-  r = Math.max(0, r);
-  g = Math.max(0, g);
-  b = Math.max(0, b);
-  return (
-    (usePound ? "#" : "") +
-    ((r << 16) | (g << 8) | b).toString(16).padStart(6, "0")
-  );
-};
+import { RED, GOLD, DARK_RED } from "../colors";
 
 const NavButton = ({ title, description, link }) => {
   const buttonStyle = {
@@ -35,10 +16,12 @@ const NavButton = ({ title, description, link }) => {
   };
 
   const upSize = e => (e.target.style.transform = "scale(1.05)");
-  const darkenButton = e =>
-    (e.target.style.backgroundColor = darkenColor(RED, 40));
+  const darkenButton = e => (e.target.style.backgroundColor = DARK_RED);
   const resetColor = e => (e.target.style.backgroundColor = RED);
   const resetSize = e => (e.target.style.transform = "scale(1)");
+  const reset = e => {
+    resetColor(e), resetSize(e);
+  };
 
   return (
     <div>
@@ -47,9 +30,7 @@ const NavButton = ({ title, description, link }) => {
         onMouseOver={upSize}
         onMouseDown={darkenButton}
         onMouseUp={resetColor}
-        onMouseOut={e => {
-          resetColor(e), resetSize(e);
-        }}
+        onMouseOut={reset}
         onClick={() => (window.location.href = link ?? "#")}>
         {title ?? "Title"}
       </button>

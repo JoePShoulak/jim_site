@@ -60,17 +60,6 @@ h4 {
 p {
   margin-bottom: 10px;
 }
-.navButton {
-  padding: 15px 30px;
-  margin: 0 15px 0 15px;
-  font-size: 18px; /* Larger text */
-  border-radius: 15px; /* Makes it rounder */
-  background-color: #a6192e; /* Main color */
-  color: #eaaa00; /* Text color */
-  border: 2px solid black; /* Border color */
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
 @media (max-width: 768px) {
   main {
     flex-direction: column;
