@@ -1,14 +1,10 @@
 import { NavButton } from "./NavButton";
 import buttonProps from "../data/navButtons.json"; // Import JSON
 
-const Footer = () => {
-  const footerStyle = {
+const styles = {
+  navFooter: {
     width: "100%",
     textAlign: "center",
-  };
-
-  const navFooterStyle = {
-    ...footerStyle,
     padding: "10px",
     display: "flex",
     flexDirection: "row",
@@ -16,29 +12,31 @@ const Footer = () => {
     justifyContent: "space-evenly",
     marginBottom: "10px",
     gap: "10px",
-  };
-
-  const minorFooterStyle = {
-    ...footerStyle,
+  },
+  minorFooterStyle: {
+    width: "100%",
+    textAlign: "center",
     background: "#222",
     color: "white",
     padding: "5px",
     fontSize: "0.8em",
-  };
-
-  return (
-    <>
-      <footer style={navFooterStyle}>
-        <NavButton {...buttonProps.chapel} />
-        <NavButton {...buttonProps.writings} />
-        <NavButton {...buttonProps.hymns} />
-        <NavButton {...buttonProps.diaconate} />
-        <NavButton {...buttonProps.shop} />
-        <NavButton {...buttonProps.contact} />
-      </footer>
-      <footer style={minorFooterStyle}>Made by Joe P. Shoulak - 2025</footer>
-    </>
-  );
+  },
 };
+
+const Footer = () => (
+  <>
+    <footer style={styles.navFooter}>
+      <NavButton {...buttonProps.chapel} />
+      <NavButton {...buttonProps.writings} />
+      <NavButton {...buttonProps.hymns} />
+      <NavButton {...buttonProps.diaconate} />
+      <NavButton {...buttonProps.shop} />
+      <NavButton {...buttonProps.contact} />
+    </footer>
+    <footer style={styles.minorFooterStyle}>
+      Made by Joe P. Shoulak - 2025
+    </footer>
+  </>
+);
 
 export { Footer };
