@@ -5,13 +5,35 @@
   font-style: normal;
 }
 
+/* @font-face {
+  font-family: "Wrexham";
+  src: url("/src/fonts/Wrexham.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+} */
+
+@font-face {
+  font-family: "Tangerine";
+  src: url("https://fonts.gstatic.com/s/tangerine/v17/IurY6Y5j_oScZZow4VOxCZZM.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Aptos";
+  src: url("/src/fonts/Aptos.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 body {
-  font-family: Arial, sans-serif;
+  font-family: Aptos, Arial, sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
