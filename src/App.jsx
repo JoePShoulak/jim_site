@@ -1,19 +1,13 @@
 import "./App.css";
-
-import { NavButton } from "./components/NavButton";
+import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
 
 import footwashingImage from "./images/footwashing.png";
 
 function App() {
   return (
     <>
-      <header>
-        <h1>Chapel of St. Stephen</h1>
-        <h2>
-          For Deacons and other Servant Leaders who serve the least, the last,
-          and the lost
-        </h2>
-      </header>
+      <Header />
       <main>
         <aside>
           <h3>Welcome!</h3>
@@ -49,15 +43,7 @@ function App() {
           <p> No part of this website was written or designed by AI.</p>
         </aside>
       </main>
-      <footer>
-        <NavButton title={"Chapel"} />
-        <NavButton title={"Jim's Writings"} />
-        <NavButton title={"Jim's Hymms"} />
-        <NavButton title={"The Diaconate"} />
-        <NavButton title={"Gift Shop"} />
-        <NavButton title={"Info & Contact"} />
-      </footer>
-      <footer className="minor-footer">Made by Joe P. Shoulak - 2025</footer>
+      <Footer />
     </>
   );
 }
