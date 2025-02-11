@@ -1,8 +1,11 @@
 import "./App.css";
+import { GREEN } from "./colors";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
+import { NavButton } from "./components/NavButton";
 
 import footwashingImage from "./images/footwashing.png";
+import signatureImage from "./images/signature.png";
 
 function App() {
   return (
@@ -16,6 +19,21 @@ function App() {
             any denomination — or no church affiliation — to settle here for a
             while and enter into the spiritual presence of a Higher Power.
           </p>
+          <img
+            src={signatureImage}
+            alt="Jim's Signature"
+            style={{
+              width: "100%",
+              height: "auto",
+              display: "block",
+              marginBottom: "50px",
+            }}
+          />
+          <NavButton
+            color={GREEN}
+            title={"Stayin' Focused"}
+            description={"Singer-Songwriter Jim's Secular Folk Music Site"}
+          />
         </aside>
         <section>
           <img

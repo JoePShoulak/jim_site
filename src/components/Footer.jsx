@@ -8,8 +8,10 @@ const Footer = () => {
     padding: "10px",
     display: "flex",
     flexDirection: "row",
-    alignItems: "center",
-    marginBottom: "10px", // Adds spacing between button sets
+    alignItems: "flex-start", // Forces all items to align at the top
+    justifyContent: "space-evenly",
+    marginBottom: "10px",
+    gap: "10px",
   };
 
   const minorFooterStyle = {
@@ -24,7 +26,12 @@ const Footer = () => {
   return (
     <>
       <footer style={navFooterStyle}>
-        <NavButton title={"Chapel"} />
+        <NavButton
+          title={"Chapel"}
+          description={
+            "31-Day Service-Themed Prayer Cycle, Contemplative Music, and Prayer Requests"
+          }
+        />
         <NavButton title={"Jim's Writings"} />
         <NavButton title={"Jim's Hymms"} />
         <NavButton title={"The Diaconate"} />
