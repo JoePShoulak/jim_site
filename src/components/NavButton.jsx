@@ -3,8 +3,8 @@
 import { RED, GOLD } from "../colors";
 import { colorChange } from "../scripts/colorChange";
 
-const NavButton = ({ title, description, link, color = RED }) => {
-  const divStyle = {
+const styles = {
+  div: {
     textAlign: "center",
     flex: "1", // Ensures equal width distribution across the footer
     display: "flex",
@@ -13,14 +13,13 @@ const NavButton = ({ title, description, link, color = RED }) => {
     alignItems: "center",
     maxWidth: "200px", // Prevents excessive stretching
     minWidth: "150px", // Ensures a reasonable minimum width
-  };
-
-  const buttonStyle = {
+  },
+  button: {
+    fontFamily: "RomanAntique, Serif",
     padding: "15px 30px",
     margin: "0 15px 5px 15px",
-    fontSize: "18px",
+    fontSize: "22px",
     borderRadius: "15px",
-    backgroundColor: color,
     color: GOLD,
     border: "2px solid black",
     cursor: "pointer",
@@ -31,17 +30,18 @@ const NavButton = ({ title, description, link, color = RED }) => {
     justifyContent: "center",
     width: "100%", // Ensures button width is consistent
     maxWidth: "180px", // Prevents stretching but keeps it uniform
-  };
-
-  const descriptionStyle = {
+  },
+  description: {
     fontSize: "0.9em",
     wordWrap: "break-word",
     overflowWrap: "break-word",
     textAlign: "center",
     marginTop: "5px", // Adds spacing between button and text
     width: "100%", // Prevents text from altering the div width
-  };
+  },
+};
 
+const NavButton = ({ title, description, link, color = RED }) => {
   const upSize = e => (e.target.style.transform = "scale(1.05)");
   const darkenButton = e =>
     (e.target.style.backgroundColor = colorChange(color, -0.4));
@@ -52,9 +52,9 @@ const NavButton = ({ title, description, link, color = RED }) => {
   };
 
   return (
-    <div style={divStyle}>
+    <div style={styles.div}>
       <button
-        style={buttonStyle}
+        style={{ ...styles.button, backgroundColor: color }}
         onMouseOver={upSize}
         onMouseDown={darkenButton}
         onMouseUp={resetColor}
@@ -62,7 +62,9 @@ const NavButton = ({ title, description, link, color = RED }) => {
         onClick={() => (window.location.href = link ?? "#")}>
         {title ?? "Title"}
       </button>
-      <h4 style={descriptionStyle}>{description ?? "Description goes here"}</h4>
+      <h4 style={styles.description}>
+        {description ?? "Description goes here"}
+      </h4>
     </div>
   );
 };

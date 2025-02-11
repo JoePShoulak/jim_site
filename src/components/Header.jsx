@@ -26,9 +26,8 @@ const Header = () => {
   };
 
   const textStyle = {
-    fontFamily: "serif",
+    fontFamily: "RomanAntique, serif",
     fontSize: "32px",
-    fontWeight: "bold",
   };
 
   const subTextStyle = {

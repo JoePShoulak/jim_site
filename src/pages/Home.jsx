@@ -8,7 +8,7 @@ const Home = () => (
   <main>
     <aside>
       <h3>Welcome!</h3>
-      <p>
+      <p style={{ marginBottom: "50px" }}>
         I hope the time you spend here is beneficial. We invite persons of any
         denomination — or no church affiliation — to settle here for a while and
         enter into the spiritual presence of a Higher Power.
@@ -35,7 +35,9 @@ const Home = () => (
         alt="footwashing art"
         style={{ width: "100%", height: "auto", display: "block" }}
       />
-      <p style={{ justifySelf: "right" }}>Illustration by Joe G. Shoulak</p>
+      <p style={{ justifySelf: "right", fontFamily: "RomanAntique, serif" }}>
+        Illustration by Joe G. Shoulak
+      </p>
     </section>
     <aside>
       <p>
