@@ -1,4 +1,5 @@
 import { NavButton } from "./NavButton";
+import buttonProps from "../data/navButtons.json"; // Import JSON
 
 const Footer = () => {
   const footerStyle = {
@@ -28,31 +29,12 @@ const Footer = () => {
   return (
     <>
       <footer style={navFooterStyle}>
-        <NavButton
-          title={"Chapel"}
-          description={
-            "31-Day Service-Themed Prayer Cycle, Contemplative Music, and Prayer Requests"
-          }
-        />
-        <NavButton
-          title={"Jim's Writings"}
-          description={"Sermon Excerpts, Reflections, and Prayers"}
-        />
-        <NavButton
-          title={"Jim's Hymms"}
-          description={"MP3s & Lyrics of Original Songs"}
-        />
-        <NavButton
-          title={"The Diaconate"}
-          description={"Storied and Commenrary on the Life of a Deacon"}
-        />
-        <NavButton title={"Gift Shop"} description={"Link To Etsy"} />
-        <NavButton
-          title={"Info & Contact"}
-          description={
-            "Story behind this site, as well as Info About Jim, and his Contact Info"
-          }
-        />
+        <NavButton {...buttonProps.chapel} />
+        <NavButton {...buttonProps.writings} />
+        <NavButton {...buttonProps.hymns} />
+        <NavButton {...buttonProps.diaconate} />
+        <NavButton {...buttonProps.shop} />
+        <NavButton {...buttonProps.contact} />
       </footer>
       <footer style={minorFooterStyle}>Made by Joe P. Shoulak - 2025</footer>
     </>

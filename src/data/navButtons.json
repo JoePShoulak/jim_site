@@ -1,0 +1,32 @@
+{
+  "chapel": {
+    "title": "Chapel",
+    "description": "31-Day Service-Themed Prayer Cycle, Contemplative Music, and Prayer Requests",
+    "link": "/chapel"
+  },
+  "writings": {
+    "title": "Jim's Writings",
+    "description": "Sermon Excerpts, Reflections, and Prayers",
+    "link": "/writings"
+  },
+  "hymns": {
+    "title": "Jim's Hymns",
+    "description": "MP3s & Lyrics of Original Songs",
+    "link": "/hymns"
+  },
+  "diaconate": {
+    "title": "The Diaconate",
+    "description": "Stories and Commentary on the Life of a Deacon",
+    "link": "/diaconate"
+  },
+  "shop": {
+    "title": "Gift Shop",
+    "description": "Link To Etsy",
+    "link": "/shop"
+  },
+  "contact": {
+    "title": "Info & Contact",
+    "description": "Story behind this site, as well as Info About Jim, and his Contact Info",
+    "link": "/contact"
+  }
+}
