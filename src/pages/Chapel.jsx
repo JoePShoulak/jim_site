@@ -11,15 +11,15 @@ const styles = {
   },
   dailyPrayers: {
     grid: {
-      display: "flex",
-      flexWrap: "wrap",
+      display: "grid",
+      gridTemplateColumns: "repeat(7, 1fr)", // Ensures equal rows except the last one
       justifyContent: "center",
-      maxWidth: "200px",
+      maxWidth: "210px",
       margin: "auto",
+      gap: "10px",
     },
     dayNumber: {
       textDecoration: "none",
-      margin: "5px",
       fontSize: "18px",
       cursor: "pointer", // Makes it clear it's clickable
     },
@@ -83,7 +83,7 @@ const DailyPrayers = () => {
 
   return (
     <aside style={styles.container}>
-      <h2>Daily Prayers</h2>
+      <h2 style={{ marginBottom: "20px" }}>Daily Prayers</h2>
       <div style={styles.dailyPrayers.grid}>
         {[...Array(31)].map((_, i) => {
           const day = i + 1;
