@@ -1,0 +1,31 @@
+{
+  "leftColumn": [
+    { "title": "Welcome the Traveler", "duration": "3:06" },
+    { "title": "Come to Me", "duration": "3:27" },
+    { "title": "A New Dawn is Alive!", "duration": "3:54" },
+    { "title": "Mrs. Schrader’s Garden", "duration": "3:59" },
+    { "title": "In Your Name", "duration": "3:11" },
+    { "title": "Faithful Servant", "duration": "4:11" },
+    { "title": "Say the Word!", "duration": "2:55" },
+    { "title": "Jerusalem", "duration": "3:35" },
+    { "title": "Sister Mary Boniface", "duration": "4:22" }
+  ],
+  "rightColumn": [
+    { "title": "Hardships & Trials", "duration": "3:22" },
+    { "title": "Psalm 116", "duration": "3:07" },
+    { "title": "God Gave Me Everything", "duration": "4:15" },
+    {
+      "title": "Holy Is His Name",
+      "duration": "3:01",
+      "note": "The Magnificat"
+    },
+    { "title": "For You Are My People", "duration": "3:43" },
+    { "title": "A Believing Thomas", "duration": "3:09" },
+    {
+      "title": "Silent Prayer",
+      "duration": "4:21",
+      "note": "Lyrics by My Mom"
+    },
+    { "title": "Paradise Bay", "duration": "4:20" }
+  ]
+}
