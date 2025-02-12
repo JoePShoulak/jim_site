@@ -13,13 +13,14 @@ const Hymns = () => {
   useTitle("Hymns");
 
   return (
-    <div
+    <main
       style={{
         backgroundImage: "url(/images/guitar.png)",
         backgroundPosition: "center",
         backgroundSize: "80%", // Scaled down guitar image
         backgroundRepeat: "no-repeat",
-        height: "800px",
+        width: "1300px",
+        maxWidth: "100%",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -32,7 +33,7 @@ const Hymns = () => {
           justifyContent: "space-between",
           width: "80%",
           maxWidth: "900px",
-          color: GREEN, // Blue-ish text color
+          color: GREEN,
           fontSize: "20px",
           fontFamily: "serif",
           fontWeight: "bold",
@@ -51,7 +52,7 @@ const Hymns = () => {
           ))}
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
