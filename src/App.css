@@ -1,3 +1,4 @@
+/* ===== FONTS ===== */
 @font-face {
   font-family: "RomanAntique";
   src: url("/fonts/RomanAntique.ttf") format("truetype");
@@ -28,6 +29,7 @@
   font-style: normal;
 }
 
+/* ===== MAIN ===== */
 * {
   margin: 0;
   padding: 0;
@@ -67,6 +69,7 @@ p {
   line-height: 1.8;
 }
 
+/* ===== CHAPEL ===== */
 /* Styles for Daily Prayers Grid */
 .daily-prayers-grid {
   display: grid;
@@ -115,6 +118,7 @@ p {
   cursor: pointer;
 }
 
+/* ===== RESPONSIVENESS ===== */
 @media (max-width: 768px) {
   main {
     flex-direction: column;
