@@ -2,9 +2,12 @@ import logo from "../images/logo.png";
 import stole from "../images/stole.png";
 import bishopCross from "../images/bishop-cross.png";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
+  const pageName = location.pathname.replace("/", "").toUpperCase() || "HOME";
+
   const dropImageStyle = {
     position: "absolute",
     width: "auto",
@@ -23,6 +26,7 @@ const Header = () => {
       alignItems: "center",
       justifyContent: "space-between",
       border: "8px solid black", // Thick black border
+      position: "relative",
     },
     logo: {
       ...dropImageStyle,
@@ -55,6 +59,16 @@ const Header = () => {
       fontSize: "24px",
       fontWeight: "bold",
     },
+    pageOverlay: {
+      position: "absolute",
+      top: "50%",
+      right: "15%",
+      transform: "translate(50%, -50%)",
+      color: "black",
+      fontSize: "48px",
+      fontWeight: "bold",
+      whiteSpace: "nowrap",
+    },
   };
 
   return (
@@ -71,6 +85,7 @@ const Header = () => {
         </h2>
       </div>
       <img src={stole} alt="Stole" style={styles.stole} />
+      <div style={styles.pageOverlay}>{pageName}</div>
     </header>
   );
 };

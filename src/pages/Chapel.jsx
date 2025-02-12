@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 import myGif from "../images/candle.gif";
+import prayers from "../data/prayers.json"; // Import prayer data
 
 const styles = {
   container: {
@@ -21,8 +21,17 @@ const styles = {
 
 const DailyPrayers = () => {
   const [currentDay] = useState(new Date().getDate()); // Get today's day number
+  const [selectedPrayer, setSelectedPrayer] = useState(null); // Stores the selected prayer
+  const [isModalOpen, setModalOpen] = useState(false); // Controls modal visibility
 
   const isToday = day => day === currentDay;
+
+  const openModal = day => {
+    setSelectedPrayer(prayers[day]); // Fetch prayer from JSON
+    setModalOpen(true); // Show modal
+  };
+
+  const closeModal = () => setModalOpen(false); // Hide modal
 
   const dayNumberStyle = day => ({
     textDecoration: "none",
@@ -30,24 +39,71 @@ const DailyPrayers = () => {
     fontWeight: isToday(day) ? "bold" : "normal",
     margin: "5px",
     fontSize: "18px",
+    cursor: "pointer", // Makes it clear it's clickable
   });
 
   return (
     <aside style={styles.container}>
       <h2>Daily Prayers</h2>
-      <p>Day #:</p>
       <div style={styles.dailyPrayers.grid}>
         {[...Array(31)].map((_, i) => {
           const day = i + 1;
           return (
-            <Link key={day} to={`/prayer/${day}`} style={dayNumberStyle(day)}>
+            <span
+              key={day}
+              style={dayNumberStyle(day)}
+              onClick={() => openModal(day)}>
               {day}
-            </Link>
+            </span>
           );
         })}
       </div>
+
+      {/* Modal Component */}
+      {isModalOpen && selectedPrayer && (
+        <div style={modalStyle}>
+          <div style={modalContentStyle}>
+            <h2>{selectedPrayer.title}</h2>
+            <p>{selectedPrayer.text}</p>
+            <button onClick={closeModal} style={closeButtonStyle}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </aside>
   );
+};
+
+// Modal Styling
+const modalStyle = {
+  position: "fixed",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  background: "rgba(0, 0, 0, 0.5)",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  zIndex: 1000, // Ensure modal is always on top
+};
+
+const modalContentStyle = {
+  background: "white",
+  padding: "20px",
+  borderRadius: "10px",
+  textAlign: "center",
+  width: "80%",
+  maxWidth: "400px",
+  zIndex: 1001, // Ensure content is above background overlay
+};
+
+const closeButtonStyle = {
+  marginTop: "10px",
+  padding: "5px 10px",
+  fontSize: "16px",
+  cursor: "pointer",
 };
 
 const PrayerRequest = () => (
@@ -67,7 +123,7 @@ const Chapel = () => (
         <h1>Chapel</h1>
         <p>
           This is where you get your daily prayers and can submit prayer
-          requets.
+          requests.
         </p>
       </div>
     </section>
