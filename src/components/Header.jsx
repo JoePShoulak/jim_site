@@ -1,6 +1,6 @@
-import logo from "../images/logo.png";
-import stole from "../images/stole.png";
-import bishopCross from "../images/bishop-cross.png";
+import logo from "/images/logo.png";
+import stole from "/images/stole.png";
+import bishopCross from "/images/bishop-cross.png";
 
 import { Link, useLocation } from "react-router-dom";
 

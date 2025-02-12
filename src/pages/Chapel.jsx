@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import myGif from "../images/candle.gif";
+import myGif from "/images/candle.gif";
 import prayers from "../data/prayers.json"; // Import prayer data
 
 const styles = {

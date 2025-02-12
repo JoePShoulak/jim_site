@@ -1,5 +1,5 @@
-import footwashingImage from "../images/footwashing.png";
-import signatureImage from "../images/signature.png";
+import footwashingImage from "/images/footwashing.png";
+import signatureImage from "/images/signature.png";
 
 // Styles
 const styles = {
