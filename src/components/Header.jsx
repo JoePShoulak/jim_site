@@ -2,6 +2,8 @@ import logo from "../images/logo.png";
 import stole from "../images/stole.png";
 import bishopCross from "../images/bishop-cross.png";
 
+import { Link } from "react-router-dom";
+
 const Header = () => {
   const dropImageStyle = {
     position: "absolute",
@@ -12,11 +14,10 @@ const Header = () => {
     header: {
       width: "calc(100%-20px)",
       height: "200px",
-      marginBottom: "90px",
+      marginBottom: "100px",
       background: "#fff", // White background
       color: "black",
       padding: "20px",
-      margin: "20px",
       textAlign: "center",
       display: "flex",
       alignItems: "center",
@@ -58,7 +59,9 @@ const Header = () => {
 
   return (
     <header style={styles.header}>
-      <img src={logo} alt="Chapel Logo" style={styles.logo} />
+      <Link to="/">
+        <img src={logo} alt="Chapel Logo" style={styles.logo} />
+      </Link>
       <div style={styles.banner}>
         <h1 style={styles.text}>Chapel of St. Stephen</h1>
         <h2 style={styles.subText}>
