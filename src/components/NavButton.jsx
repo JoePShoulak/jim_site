@@ -1,45 +1,7 @@
 /* eslint-disable react/prop-types */ // Why?
 
-import { RED, GOLD } from "../assets/colors";
+import { RED } from "../assets/colors";
 import { colorChange } from "../utils/colorChange";
-
-const styles = {
-  div: {
-    textAlign: "center",
-    flex: "1", // Ensures equal width distribution across the footer
-    display: "flex",
-    flexDirection: "column", // Ensures content stacks downward
-    justifyContent: "flex-start", // Makes sure content grows downward
-    alignItems: "center",
-    maxWidth: "200px", // Prevents excessive stretching
-    minWidth: "150px", // Ensures a reasonable minimum width
-  },
-  button: {
-    fontFamily: "RomanAntique, Serif",
-    padding: "15px 30px",
-    margin: "0 15px 5px 15px",
-    fontSize: "22px",
-    borderRadius: "15px",
-    color: GOLD,
-    border: "2px solid black",
-    cursor: "pointer",
-    transition: "transform 0.2s ease, background-color 0.2s ease",
-    height: "60px", // Fixed height to make all buttons the same size
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "100%", // Ensures button width is consistent
-    maxWidth: "180px", // Prevents stretching but keeps it uniform
-  },
-  description: {
-    fontSize: "0.9em",
-    wordWrap: "break-word",
-    overflowWrap: "break-word",
-    textAlign: "center",
-    marginTop: "5px", // Adds spacing between button and text
-    width: "100%", // Prevents text from altering the div width
-  },
-};
 
 const NavButton = ({ title, description, link, color = RED }) => {
   const upSize = e => (e.target.style.transform = "scale(1.05)");
@@ -52,9 +14,10 @@ const NavButton = ({ title, description, link, color = RED }) => {
   };
 
   return (
-    <div style={styles.div}>
+    <div className="nav-button">
       <button
-        style={{ ...styles.button, backgroundColor: color }}
+        className="nav-button"
+        style={{ backgroundColor: color }}
         onMouseOver={upSize}
         onMouseDown={darkenButton}
         onMouseUp={resetColor}
@@ -62,9 +25,7 @@ const NavButton = ({ title, description, link, color = RED }) => {
         onClick={() => (window.location.href = link ?? "#")}>
         {title ?? "Title"}
       </button>
-      <h4 style={styles.description}>
-        {description ?? "Description goes here"}
-      </h4>
+      <h4 className="nav-button">{description ?? "Description goes here"}</h4>
     </div>
   );
 };
