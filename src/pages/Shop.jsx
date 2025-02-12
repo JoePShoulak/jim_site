@@ -1,14 +1,20 @@
-const Shop = () => (
-  <main>
-    <aside></aside>
+import useTitle from "../hooks/useTitle";
+
+const Shop = () => {
+  useTitle("Shop");
+
+  return (
     <main>
-      <div>
-        <h1>Shop</h1>
-        <p>Shop</p>
-      </div>
+      <aside></aside>
+      <main>
+        <div>
+          <h1>Shop</h1>
+          <p>Shop</p>
+        </div>
+      </main>
+      <aside></aside>
     </main>
-    <aside></aside>
-  </main>
-);
+  );
+};
 
 export default Shop;

@@ -1,14 +1,20 @@
-const Hymns = () => (
-  <main>
-    <aside></aside>
+import useTitle from "../hooks/useTitle";
+
+const Hymns = () => {
+  useTitle("Hymns");
+
+  return (
     <main>
-      <div>
-        <h1>Hymns</h1>
-        <p>Hymns</p>
-      </div>
+      <aside></aside>
+      <main>
+        <div>
+          <h1>Hymns</h1>
+          <p>Hymns</p>
+        </div>
+      </main>
+      <aside></aside>
     </main>
-    <aside></aside>
-  </main>
-);
+  );
+};
 
 export default Hymns;

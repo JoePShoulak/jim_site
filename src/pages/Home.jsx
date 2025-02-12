@@ -1,3 +1,4 @@
+import useTitle from "../hooks/useTitle";
 import footwashingImage from "/images/footwashing.png";
 import signatureImage from "/images/signature.png";
 
@@ -72,14 +73,18 @@ const Disclaimer = () => (
 );
 
 // Main
-const Home = () => (
-  <>
-    <main>
-      <Welcome />
-      <MainImage />
-      <Disclaimer />
-    </main>
-  </>
-);
+const Home = () => {
+  useTitle("Home");
+
+  return (
+    <>
+      <main>
+        <Welcome />
+        <MainImage />
+        <Disclaimer />
+      </main>
+    </>
+  );
+};
 
 export default Home;

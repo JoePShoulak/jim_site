@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import myGif from "/images/candle.gif";
 import prayers from "../data/prayers.json"; // Import prayer data
+import useTitle from "../hooks/useTitle";
 
 const styles = {
   container: {
@@ -127,14 +128,18 @@ const PrayerRequest = () => (
   </aside>
 );
 
-const Chapel = () => (
-  <main>
-    <DailyPrayers />
-    <section>
-      <img src="/images/chapel_main.jpg" style={{ width: "100%" }} />
-    </section>
-    <PrayerRequest />
-  </main>
-);
+const Chapel = () => {
+  useTitle("Chapel");
+
+  return (
+    <main>
+      <DailyPrayers />
+      <section>
+        <img src="/images/chapel_main.jpg" style={{ width: "100%" }} />
+      </section>
+      <PrayerRequest />
+    </main>
+  );
+};
 
 export default Chapel;
