@@ -26,7 +26,7 @@ const DailyPrayers = () => {
 
   return (
     <aside className="daily-prayers-container">
-      <h2 style={{ marginBottom: "20px" }}>Daily Prayers</h2>
+      <h2>Daily Prayers</h2>
       <div className="daily-prayers-grid">
         {[...Array(31)].map((_, i) => {
           const day = i + 1;

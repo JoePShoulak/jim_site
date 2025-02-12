@@ -10,20 +10,6 @@ const dropImageStyle = {
 };
 
 const styles = {
-  header: {
-    width: "calc(100%-20px)",
-    height: "200px",
-    marginBottom: "100px",
-    background: "#fff", // White background
-    color: "black",
-    padding: "20px",
-    textAlign: "center",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    border: "8px solid black", // Thick black border
-    position: "relative",
-  },
   logo: {
     ...dropImageStyle,
     top: "30px",
