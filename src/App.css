@@ -1,3 +1,11 @@
+/* ===== VARS ===== */
+:root {
+  --red: #a6192e;
+  --gold: #eaaa00;
+  --green: #154734;
+  --wheat: #ddcba4;
+}
+
 /* ===== FONTS ===== */
 @font-face {
   font-family: "RomanAntique";
@@ -126,6 +134,41 @@ p {
   padding: 5px 10px;
   font-size: 16px;
   cursor: pointer;
+}
+
+/* ===== HYMNS ===== */
+main#hymns {
+  background-image: url(/images/guitar.png);
+  background-position: center;
+  background-size: 80%; /* Scaled down guitar image */
+  background-repeat: no-repeat;
+  width: 1300px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+main#hymns .text-columns {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  max-width: 900px;
+  color: var(--green); /* Assuming GREEN is defined as a CSS variable */
+  font-size: 20px;
+  font-family: serif;
+  font-weight: bold;
+}
+
+main#hymns .text-columns .left-column,
+main#hymns .text-columns .right-column {
+  text-align: left;
+  width: 45%;
+}
+
+main#hymns .text-columns .right-column {
+  text-align: right;
 }
 
 /* ===== MISC ===== */
