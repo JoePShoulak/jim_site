@@ -1,10 +1,13 @@
 const Chapel = () => (
   <main>
-    <h1>Chapel</h1>
-    <p>
-      31-Day Service-Themed Prayer Cycle, Contemplative Music, and Prayer
-      Requests
-    </p>
+    <aside></aside>
+    <main>
+      <div>
+        <h1>Chapel</h1>
+        <p>Chapel</p>
+      </div>
+    </main>
+    <aside></aside>
   </main>
 );
 

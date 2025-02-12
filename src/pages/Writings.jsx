@@ -1,7 +1,13 @@
 const Writings = () => (
   <main>
-    <h1>Writings</h1>
-    <p>Writings</p>
+    <aside></aside>
+    <main>
+      <div>
+        <h1>Writings</h1>
+        <p>Writings</p>
+      </div>
+    </main>
+    <aside></aside>
   </main>
 );
 
