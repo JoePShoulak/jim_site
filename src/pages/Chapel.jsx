@@ -16,6 +16,41 @@ const styles = {
       maxWidth: "200px",
       margin: "auto",
     },
+    dayNumber: {
+      textDecoration: "none",
+      margin: "5px",
+      fontSize: "18px",
+      cursor: "pointer", // Makes it clear it's clickable
+    },
+  },
+  prayer: {
+    modalStyle: {
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      background: "rgba(0, 0, 0, 0.5)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 1000, // Ensure modal is always on top
+    },
+    content: {
+      background: "white",
+      padding: "20px",
+      borderRadius: "10px",
+      textAlign: "center",
+      width: "80%",
+      maxWidth: "400px",
+      zIndex: 1001, // Ensure content is above background overlay
+    },
+    button: {
+      marginTop: "10px",
+      padding: "5px 10px",
+      fontSize: "16px",
+      cursor: "pointer",
+    },
   },
 };
 
@@ -40,12 +75,9 @@ const DailyPrayers = () => {
   };
 
   const dayNumberStyle = day => ({
-    textDecoration: "none",
+    ...styles.dailyPrayers.dayNumber,
     color: isToday(day) ? "red" : "black", // Highlight current day
     fontWeight: isToday(day) ? "bold" : "normal",
-    margin: "5px",
-    fontSize: "18px",
-    cursor: "pointer", // Makes it clear it's clickable
   });
 
   return (
@@ -69,12 +101,14 @@ const DailyPrayers = () => {
       {isModalOpen && selectedPrayer && (
         <div
           id="modal-background"
-          style={modalStyle}
+          style={styles.prayer.modalStyle}
           onClick={handleOutsideClick}>
-          <div style={modalContentStyle} onClick={e => e.stopPropagation()}>
+          <div
+            style={styles.dailyPrayers.content}
+            onClick={e => e.stopPropagation()}>
             <h2>{selectedPrayer.title}</h2>
             <p>{selectedPrayer.text}</p>
-            <button onClick={closeModal} style={closeButtonStyle}>
+            <button onClick={closeModal} style={styles.prayer.button}>
               Close
             </button>
           </div>
@@ -82,37 +116,6 @@ const DailyPrayers = () => {
       )}
     </aside>
   );
-};
-
-// Modal Styling
-const modalStyle = {
-  position: "fixed",
-  top: 0,
-  left: 0,
-  width: "100%",
-  height: "100%",
-  background: "rgba(0, 0, 0, 0.5)",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  zIndex: 1000, // Ensure modal is always on top
-};
-
-const modalContentStyle = {
-  background: "white",
-  padding: "20px",
-  borderRadius: "10px",
-  textAlign: "center",
-  width: "80%",
-  maxWidth: "400px",
-  zIndex: 1001, // Ensure content is above background overlay
-};
-
-const closeButtonStyle = {
-  marginTop: "10px",
-  padding: "5px 10px",
-  fontSize: "16px",
-  cursor: "pointer",
 };
 
 const PrayerRequest = () => (
