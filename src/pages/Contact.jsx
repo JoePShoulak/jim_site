@@ -12,12 +12,12 @@ const Contact = () => (
           chaplain for his local police department.
           <br />
           <br />
-          <emph>
+          <em>
             “For many years I dreamed of assembling a prayer routine based on
             the Ordination Vows of a Deacon — of course with a focused theme of
             service. With the computer help of my son Joe P. Shoulak, this is
             the result! I pray that this site will ‘be a service’ to you!”
-          </emph>
+          </em>
           <br />
           <br />
           Peace and blessings, Jim

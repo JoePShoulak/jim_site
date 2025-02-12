@@ -69,7 +69,9 @@ const styles = {
 
 const Header = () => {
   const location = useLocation();
-  const pageName = location.pathname.replace("/", "").toUpperCase() || "HOME";
+  const pageName =
+    location.pathname.replace("/", "").replace("_", " ").toUpperCase() ||
+    "HOME";
 
   return (
     <header style={styles.header}>
