@@ -36,7 +36,7 @@ const Footer = () => (
       })}
     </footer>
     <footer style={styles.minorFooterStyle}>
-      Made by Joe P. Shoulak - 2025
+      Made by Joe P. Shoulak - {new Date().getFullYear()}
     </footer>
   </>
 );
