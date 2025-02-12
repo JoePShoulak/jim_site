@@ -104,7 +104,7 @@ const DailyPrayers = () => {
           style={styles.prayer.modalStyle}
           onClick={handleOutsideClick}>
           <div
-            style={styles.dailyPrayers.content}
+            style={styles.prayer.content} // Fixed incorrect reference
             onClick={e => e.stopPropagation()}>
             <h2>{selectedPrayer.title}</h2>
             <p>{selectedPrayer.text}</p>
