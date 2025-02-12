@@ -123,7 +123,9 @@ const PrayerRequest = () => (
   <aside>
     <div style={{ textAlign: "center" }}>
       <h3>Prayer Requests (click to email)</h3>
-      <img src={myGif} alt="Flickering candle" width="300px" />
+      <a href="mailto:jimbro58@me.com">
+        <img src={myGif} alt="Flickering candle" width="300px" />
+      </a>
     </div>
   </aside>
 );
