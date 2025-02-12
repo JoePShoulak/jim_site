@@ -4,57 +4,6 @@ import myGif from "/images/candle.gif";
 import prayers from "../data/prayers.json"; // Import prayer data
 import useTitle from "../hooks/useTitle";
 
-const styles = {
-  container: {
-    textAlign: "center",
-    fontFamily: "Arial, sans-serif",
-  },
-  dailyPrayers: {
-    grid: {
-      display: "grid",
-      gridTemplateColumns: "repeat(7, 1fr)", // Ensures equal rows except the last one
-      justifyContent: "center",
-      maxWidth: "210px",
-      margin: "auto",
-      gap: "10px",
-    },
-    dayNumber: {
-      textDecoration: "none",
-      fontSize: "18px",
-      cursor: "pointer", // Makes it clear it's clickable
-    },
-  },
-  prayer: {
-    modalStyle: {
-      position: "fixed",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      background: "rgba(0, 0, 0, 0.5)",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      zIndex: 1000, // Ensure modal is always on top
-    },
-    content: {
-      background: "white",
-      padding: "20px",
-      borderRadius: "10px",
-      textAlign: "center",
-      width: "80%",
-      maxWidth: "400px",
-      zIndex: 1001, // Ensure content is above background overlay
-    },
-    button: {
-      marginTop: "10px",
-      padding: "5px 10px",
-      fontSize: "16px",
-      cursor: "pointer",
-    },
-  },
-};
-
 const DailyPrayers = () => {
   const [currentDay] = useState(new Date().getDate()); // Get today's day number
   const [selectedPrayer, setSelectedPrayer] = useState(null); // Stores the selected prayer
@@ -75,22 +24,18 @@ const DailyPrayers = () => {
     }
   };
 
-  const dayNumberStyle = day => ({
-    ...styles.dailyPrayers.dayNumber,
-    color: isToday(day) ? "red" : "black", // Highlight current day
-    fontWeight: isToday(day) ? "bold" : "normal",
-  });
-
   return (
-    <aside style={styles.container}>
+    <aside className="daily-prayers-container">
       <h2 style={{ marginBottom: "20px" }}>Daily Prayers</h2>
-      <div style={styles.dailyPrayers.grid}>
+      <div className="daily-prayers-grid">
         {[...Array(31)].map((_, i) => {
           const day = i + 1;
           return (
             <span
               key={day}
-              style={dayNumberStyle(day)}
+              className={`daily-prayer-day ${
+                isToday(day) ? "highlighted" : ""
+              }`}
               onClick={() => openModal(day)}>
               {day}
             </span>
@@ -102,14 +47,12 @@ const DailyPrayers = () => {
       {isModalOpen && selectedPrayer && (
         <div
           id="modal-background"
-          style={styles.prayer.modalStyle}
+          className="modal-background"
           onClick={handleOutsideClick}>
-          <div
-            style={styles.prayer.content} // Fixed incorrect reference
-            onClick={e => e.stopPropagation()}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
             <h2>{selectedPrayer.title}</h2>
             <p>{selectedPrayer.text}</p>
-            <button onClick={closeModal} style={styles.prayer.button}>
+            <button onClick={closeModal} className="modal-button">
               Close
             </button>
           </div>
