@@ -1,5 +1,6 @@
 import { NavButton } from "./NavButton";
 import buttonProps from "../data/navButtons.json"; // Import JSON
+import { GREEN, RED } from "../colors";
 
 // TODO: LOCK FLOATING FOOTER
 
@@ -28,12 +29,9 @@ const styles = {
 const Footer = () => (
   <>
     <footer style={styles.navFooter}>
-      <NavButton {...buttonProps.chapel} />
-      <NavButton {...buttonProps.writings} />
-      <NavButton {...buttonProps.hymns} />
-      <NavButton {...buttonProps.diaconate} />
-      <NavButton {...buttonProps.shop} />
-      <NavButton {...buttonProps.contact} />
+      {Object.entries(buttonProps).map(([key, bp]) => {
+        return <NavButton key={key} {...bp} color={bp.alt ? GREEN : RED} />;
+      })}
     </footer>
     <footer style={styles.minorFooterStyle}>
       Made by Joe P. Shoulak - 2025

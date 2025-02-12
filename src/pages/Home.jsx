@@ -1,6 +1,3 @@
-import { NavButton } from "../components/NavButton";
-import { GREEN } from "../colors";
-
 import footwashingImage from "../images/footwashing.png";
 import signatureImage from "../images/signature.png";
 
@@ -40,11 +37,6 @@ const Welcome = () => (
       src={signatureImage}
       alt="Jim's Signature"
       style={styles.welcome.image}
-    />
-    <NavButton
-      color={GREEN}
-      title={"Stayin' Focused"}
-      description={"Singer-Songwriter Jim's Secular Folk Music Site"}
     />
   </aside>
 );

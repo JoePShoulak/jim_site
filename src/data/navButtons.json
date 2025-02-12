@@ -28,5 +28,11 @@
     "title": "Info & Contact",
     "description": "Story behind this site, as well as Info About Jim, and his Contact Info",
     "link": "/contact"
+  },
+  "music": {
+    "title": "Stayin' Focused",
+    "description": "Singer-Songwriter Jim's Secular Folk Music Site",
+    "link": "/music",
+    "alt": true
   }
 }
