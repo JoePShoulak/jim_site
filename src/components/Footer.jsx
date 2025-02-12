@@ -1,6 +1,6 @@
 import { NavButton } from "./NavButton";
 import buttonProps from "../data/navButtons.json"; // Import JSON
-import { GREEN, RED } from "../colors";
+import { GREEN, RED } from "../assets/colors";
 
 // TODO: LOCK FLOATING FOOTER
 

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */ // Why?
 
-import { RED, GOLD } from "../colors";
+import { RED, GOLD } from "../assets/colors";
 import { colorChange } from "../scripts/colorChange";
 
 const styles = {
