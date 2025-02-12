@@ -33,7 +33,7 @@ const DailyPrayers = () => {
   });
 
   return (
-    <div style={styles.container}>
+    <aside style={styles.container}>
       <h2>Daily Prayers</h2>
       <p>Day #:</p>
       <div style={styles.dailyPrayers.grid}>
@@ -46,27 +46,32 @@ const DailyPrayers = () => {
           );
         })}
       </div>
-    </div>
+    </aside>
   );
 };
 
+const PrayerRequest = () => (
+  <aside>
+    <div style={{ textAlign: "center" }}>
+      <h3>Prayer Requests</h3>
+      <img src={myGif} alt="Flickering candle" width="300px" />
+    </div>
+  </aside>
+);
+
 const Chapel = () => (
   <main>
-    <aside>
-      <DailyPrayers />
-    </aside>
-    <main>
+    <DailyPrayers />
+    <section>
       <div>
         <h1>Chapel</h1>
-        <p>Chapel</p>
+        <p>
+          This is where you get your daily prayers and can submit prayer
+          requets.
+        </p>
       </div>
-    </main>
-    <aside>
-      <div style={{ textAlign: "center" }}>
-        <h3>Prayer Requests</h3>
-        <img src={myGif} alt="Flickering candle" width="300px" />
-      </div>
-    </aside>
+    </section>
+    <PrayerRequest />
   </main>
 );
 
