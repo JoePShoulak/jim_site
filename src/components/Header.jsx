@@ -1,57 +1,7 @@
 import logo from "/images/logo.png";
 import stole from "/images/stole.png";
-import bishopCross from "/images/bishop-cross.png";
 
 import { Link, useLocation } from "react-router-dom";
-
-const dropImageStyle = {
-  position: "absolute",
-  width: "auto",
-};
-
-const styles = {
-  logo: {
-    ...dropImageStyle,
-    top: "30px",
-    left: "20px",
-    height: "250px",
-    marginLeft: "15px",
-  },
-  stole: {
-    ...dropImageStyle,
-    top: "40px",
-    right: "20px",
-    height: "250px",
-    marginRight: "15px",
-  },
-  banner: {
-    flexGrow: 1,
-    height: "160px",
-    textAlign: "center",
-    backgroundImage: `url(${bishopCross})`,
-    backgroundSize: "contain",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-  },
-  text: {
-    fontFamily: "RomanAntique, serif",
-    fontSize: "64px",
-  },
-  subText: {
-    fontSize: "24px",
-    fontWeight: "bold",
-  },
-  pageOverlay: {
-    position: "absolute",
-    top: "50%",
-    right: "15%",
-    transform: "translate(50%, -50%)",
-    color: "black",
-    fontSize: "48px",
-    fontWeight: "bold",
-    whiteSpace: "nowrap",
-  },
-};
 
 const Header = () => {
   const location = useLocation();
@@ -60,20 +10,21 @@ const Header = () => {
     "HOME";
 
   return (
-    <header style={styles.header}>
+    <header>
       <Link to="/">
-        <img src={logo} alt="Chapel Logo" style={styles.logo} />
+        <img src={logo} className="drop-image" id="left" alt="Chapel Logo" />
       </Link>
-      <div style={styles.banner}>
-        <h1 style={styles.text}>Chapel of St. Stephen</h1>
-        <h2 style={styles.subText}>
+
+      <div id="banner">
+        <h1 id="title">Chapel of St. Stephen</h1>
+        <h2 id="subtitle">
           For Deacons and other Servant Leaders
           <br />
           who serve the least, the last, and the lost
         </h2>
       </div>
-      <img src={stole} alt="Stole" style={styles.stole} />
-      <div style={styles.pageOverlay}>{pageName}</div>
+      <img src={stole} className="drop-image" id="right" alt="Stole" />
+      <div id="page-name">{pageName}</div>
     </header>
   );
 };

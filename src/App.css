@@ -250,6 +250,54 @@ h4.nav-button {
   width: 100%;
 }
 
+/* ===== HEADER ===== */
+.drop-image {
+  position: absolute;
+  width: auto;
+  top: 30px;
+  height: 250px;
+}
+
+.drop-image#left {
+  left: 20px;
+  margin-left: 15px;
+}
+.drop-image#right {
+  right: 20px;
+  margin-right: 15px;
+}
+
+#title {
+  font-family: RomanAntique, serif;
+  font-size: 64px;
+}
+
+#subtitle {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+#page-name {
+  position: absolute;
+  top: 50%;
+  right: 15%;
+  transform: translate(50%, -50%);
+  color: black;
+  font-size: 48px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+#banner {
+  flex-grow: 1;
+  height: 160px;
+  text-align: center;
+  background-image: url(/images/bishop-cross.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 /* ===== FOOTER ===== */
 #navFooter {
   width: 100%;
