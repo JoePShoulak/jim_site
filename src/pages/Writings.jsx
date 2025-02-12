@@ -1,7 +1,7 @@
 import useTitle from "../hooks/useTitle";
 import lighthouse from "/images/lighthouse.jpeg";
 import elephant_oak from "/images/elephant_oak.jpg";
-import superior_sunset from "/images/elephant_oak.jpg";
+const superior_sunset = "/images/superior_sunset_3.JPG";
 
 import { WATER_BLUE, OAK_GREEN, SUNSET_ORANGE } from "../assets/colors";
 
