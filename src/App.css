@@ -298,6 +298,19 @@ h4.nav-button {
   background-repeat: no-repeat;
 }
 
+/* ===== WRITINGS ===== */
+aside.image-aside {
+  width: 33%;
+}
+
+aside.image-aside div {
+  text-align: center;
+}
+
+aside.image-aside div img {
+  width: 100%;
+}
+
 /* ===== FOOTER ===== */
 #navFooter {
   width: 100%;

@@ -7,9 +7,9 @@ const superior_sunset = "/images/superior_sunset.JPG";
 import { WATER_BLUE, OAK_GREEN, SUNSET_ORANGE } from "../assets/colors";
 
 const ImageAside = ({ image, color, label }) => (
-  <aside style={{ width: "33%" }}>
-    <div style={{ textAlign: "center" }}>
-      <img src={image} style={{ width: "100%" }} />
+  <aside className="image-aside">
+    <div>
+      <img src={image} />
       <h1 style={{ color }}>{label}</h1>
     </div>
   </aside>
