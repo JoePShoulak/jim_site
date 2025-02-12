@@ -131,13 +131,7 @@ const Chapel = () => (
   <main>
     <DailyPrayers />
     <section>
-      <div>
-        <h1>Chapel</h1>
-        <p>
-          This is where you get your daily prayers and can submit prayer
-          requests.
-        </p>
-      </div>
+      <img src="/images/chapel_main.jpg" style={{ width: "100%" }} />
     </section>
     <PrayerRequest />
   </main>
