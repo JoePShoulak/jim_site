@@ -33,6 +33,12 @@ const DailyPrayers = () => {
 
   const closeModal = () => setModalOpen(false); // Hide modal
 
+  const handleOutsideClick = event => {
+    if (event.target.id === "modal-background") {
+      closeModal();
+    }
+  };
+
   const dayNumberStyle = day => ({
     textDecoration: "none",
     color: isToday(day) ? "red" : "black", // Highlight current day
@@ -61,8 +67,11 @@ const DailyPrayers = () => {
 
       {/* Modal Component */}
       {isModalOpen && selectedPrayer && (
-        <div style={modalStyle}>
-          <div style={modalContentStyle}>
+        <div
+          id="modal-background"
+          style={modalStyle}
+          onClick={handleOutsideClick}>
+          <div style={modalContentStyle} onClick={e => e.stopPropagation()}>
             <h2>{selectedPrayer.title}</h2>
             <p>{selectedPrayer.text}</p>
             <button onClick={closeModal} style={closeButtonStyle}>
