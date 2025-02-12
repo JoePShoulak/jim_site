@@ -1,56 +1,73 @@
 import logo from "../images/logo.png";
 import stole from "../images/stole.png";
+import bishopCross from "../images/bishop-cross.png";
 
 const Header = () => {
-  const headerStyle = {
-    width: "100%",
-    background: "#fff", // White background
-    color: "black",
-    padding: "20px",
-    margin: "20px",
-    textAlign: "center",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    border: "8px solid black", // Thick black border
+  const dropImageStyle = {
+    position: "absolute",
+    width: "auto",
   };
 
-  const logoStyle = {
-    height: "100px",
-    marginLeft: "15px",
-  };
-
-  const bannerStyle = {
-    flexGrow: 1,
-    textAlign: "center",
-  };
-
-  const textStyle = {
-    fontFamily: "RomanAntique, serif",
-    fontSize: "32px",
-  };
-
-  const subTextStyle = {
-    fontSize: "16px",
-    fontWeight: "bold",
-  };
-
-  const stoleStyle = {
-    height: "120px",
-    marginRight: "15px",
+  const styles = {
+    header: {
+      width: "calc(100%-20px)",
+      height: "200px",
+      marginBottom: "90px",
+      background: "#fff", // White background
+      color: "black",
+      padding: "20px",
+      margin: "20px",
+      textAlign: "center",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      border: "8px solid black", // Thick black border
+    },
+    logo: {
+      ...dropImageStyle,
+      top: "30px",
+      left: "20px",
+      height: "250px",
+      marginLeft: "15px",
+    },
+    stole: {
+      ...dropImageStyle,
+      top: "40px",
+      right: "20px",
+      height: "250px",
+      marginRight: "15px",
+    },
+    banner: {
+      flexGrow: 1,
+      height: "160px",
+      textAlign: "center",
+      backgroundImage: `url(${bishopCross})`,
+      backgroundSize: "contain",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    },
+    text: {
+      fontFamily: "RomanAntique, serif",
+      fontSize: "64px",
+    },
+    subText: {
+      fontSize: "24px",
+      fontWeight: "bold",
+    },
   };
 
   return (
-    <header style={headerStyle}>
-      <img src={logo} alt="Chapel Logo" style={logoStyle} />
-      <div style={bannerStyle}>
-        <h1 style={textStyle}>Chapel of St. Stephen</h1>
-        <h2 style={subTextStyle}>
-          For Deacons and other Servant Leaders who serve the least, the last,
-          and the lost
+    <header style={styles.header}>
+      <img src={logo} alt="Chapel Logo" style={styles.logo} />
+      <div style={styles.banner}>
+        <h1 style={styles.text}>Chapel of St. Stephen</h1>
+        <h2 style={styles.subText}>
+          For Deacons and other Servant Leaders
+          <br />
+          who serve the least, the last, and the lost
         </h2>
       </div>
-      <img src={stole} alt="Stole" style={stoleStyle} />
+      <img src={stole} alt="Stole" style={styles.stole} />
     </header>
   );
 };

@@ -5,6 +5,7 @@
   font-style: normal;
 }
 
+/* Failed to implement */
 /* @font-face {
   font-family: "Wrexham";
   src: url("/src/fonts/Wrexham.ttf") format("truetype");
@@ -41,7 +42,7 @@ body {
 main {
   display: flex;
   flex: 1;
-  max-width: 1200px;
+  max-width: 80vw;
   margin: auto;
   padding: 20px;
   gap: 20px;

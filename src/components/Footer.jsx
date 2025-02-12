@@ -1,6 +1,8 @@
 import { NavButton } from "./NavButton";
 import buttonProps from "../data/navButtons.json"; // Import JSON
 
+// TODO: LOCK FLOATING FOOTER
+
 const styles = {
   navFooter: {
     width: "100%",

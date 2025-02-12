@@ -4,23 +4,30 @@ import { GREEN } from "../colors";
 import footwashingImage from "../images/footwashing.png";
 import signatureImage from "../images/signature.png";
 
+// Styles
 const styles = {
   welcome: {
     title: { fontFamily: "Tangerine, serif", fontSize: "50px" },
     paragraph: { marginBottom: "50px" },
     image: {
-      width: "100%",
+      width: "80%",
+      maxWidth: "300px",
       height: "auto",
       display: "block",
       marginBottom: "50px",
     },
   },
   mainImage: {
-    image: { width: "100%", height: "auto", display: "block" },
+    image: {
+      height: "auto",
+      width: "100%",
+      display: "block",
+    },
     attribution: { justifySelf: "right", fontFamily: "RomanAntique, serif" },
   },
 };
 
+// Sub-components
 const Welcome = () => (
   <aside>
     <h3 style={styles.welcome.title}>Welcome!</h3>
@@ -72,6 +79,7 @@ const Disclaimer = () => (
   </aside>
 );
 
+// Main
 const Home = () => (
   <>
     <main>
