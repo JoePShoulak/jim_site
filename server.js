@@ -1,12 +1,16 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
+
+// Manually import 'process' if it's not globally defined
+import { env } from "process";
 import dotenv from "dotenv";
 
-dotenv.config(); // Load environment variables
+// Load environment variables
+dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = env.PORT || 5000; // Use 'env' instead of 'process.env'
 
 // Fix __dirname for ESM
 const __filename = fileURLToPath(import.meta.url);
