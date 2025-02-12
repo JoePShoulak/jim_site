@@ -109,7 +109,7 @@ const closeButtonStyle = {
 const PrayerRequest = () => (
   <aside>
     <div style={{ textAlign: "center" }}>
-      <h3>Prayer Requests</h3>
+      <h3>Prayer Requests (click to email)</h3>
       <img src={myGif} alt="Flickering candle" width="300px" />
     </div>
   </aside>
