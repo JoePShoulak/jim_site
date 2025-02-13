@@ -46,7 +46,6 @@ const Hymns = () => {
         />
       </div>
 
-      {/* Modal for displaying song details */}
       <Modal
         isOpen={isModalOpen}
         onClose={closeModal}
