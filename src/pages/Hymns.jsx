@@ -25,7 +25,7 @@ const Hymns = () => {
   const [selectedSong, setSelectedSong] = useState(null);
 
   const openModal = song => {
-    setSelectedSong({ ...song }); // Override audio file
+    setSelectedSong({ ...song });
     setModalOpen(true);
   };
 
@@ -53,9 +53,7 @@ const Hymns = () => {
         {selectedSong && (
           <div>
             {selectedSong.note && <p>Note: {selectedSong.note}</p>}
-            {selectedSong.description && (
-              <p>Description: {selectedSong.description}</p>
-            )}
+            <p>Description: {selectedSong.description || selectedSong.title}</p>
             <audio controls>
               <source src={selectedSong.audio} type="audio/mpeg" />
               Your browser does not support the audio element.
