@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */ // Why?
-
 import { RED } from "../assets/colors";
 import { colorChange } from "../utils/colorChange";
 
