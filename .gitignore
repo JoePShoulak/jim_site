@@ -25,6 +25,7 @@ dist-ssr
 
 # Non-synced files
 ref/
+dist/
 
 src/images
 

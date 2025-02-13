@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-import prayers from "../data/prayers.json"; // Import prayer data
 import { useState } from "react";
+import prayers from "../data/prayers.json"; // Import prayer data
+import Modal from "../components/Modal"; // Import the new Modal component
 
 const DailyPrayers = () => {
   const [currentDay] = useState(new Date().getDate()); // Get today's day number
@@ -15,12 +16,6 @@ const DailyPrayers = () => {
   };
 
   const closeModal = () => setModalOpen(false); // Hide modal
-
-  const handleOutsideClick = event => {
-    if (event.target.id === "modal-background") {
-      closeModal();
-    }
-  };
 
   const CalendarDay = ({ day }) => {
     const classes = `daily-prayer-day ${isToday(day) ? "highlighted" : ""}`;
@@ -41,20 +36,13 @@ const DailyPrayers = () => {
         ))}
       </div>
 
-      {isModalOpen && selectedPrayer && (
-        <div
-          id="modal-background"
-          className="modal-background"
-          onClick={handleOutsideClick}>
-          <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <h2>{selectedPrayer.title}</h2>
-            <p>{selectedPrayer.text}</p>
-            <button onClick={closeModal} className="modal-button">
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+      {/* Use the extracted Modal */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        title={selectedPrayer?.title}
+        content={selectedPrayer?.text}
+      />
     </aside>
   );
 };
