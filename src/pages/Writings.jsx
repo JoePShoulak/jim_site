@@ -15,26 +15,24 @@ const ImageAside = ({ image, color, label }) => (
   </aside>
 );
 
+const imageContents = [
+  {
+    image: lighthouse,
+    color: WATER_BLUE,
+    label: "Sermon Excerpts by Scripture",
+  },
+  { image: elephant_oak, color: OAK_GREEN, label: "Reflections and Poetry" },
+  { image: superior_sunset, color: SUNSET_ORANGE, label: "Humble Prayers" },
+];
+
 const Writings = () => {
   useTitle("Writings");
 
   return (
     <main>
-      <ImageAside
-        image={lighthouse}
-        color={WATER_BLUE}
-        label="Sermon Excerpts by Scripture"
-      />
-      <ImageAside
-        image={elephant_oak}
-        color={OAK_GREEN}
-        label="Reflections and Poetry"
-      />
-      <ImageAside
-        image={superior_sunset}
-        color={SUNSET_ORANGE}
-        label="Humble Prayers"
-      />
+      {imageContents.map((content, i) => (
+        <ImageAside key={i} {...content} />
+      ))}
     </main>
   );
 };
