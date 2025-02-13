@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-const Modal = ({ isOpen, onClose, title, content }) => {
-  if (!isOpen || !content) return null; // Don't render if not open
+const Modal = ({ isOpen, onClose, title, children }) => {
+  if (!isOpen) return null; // Don't render if not open
 
   const handleOutsideClick = event => {
     if (event.target.id === "modal-background") {
@@ -14,8 +14,8 @@ const Modal = ({ isOpen, onClose, title, content }) => {
       className="modal-background"
       onClick={handleOutsideClick}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
-        <h2>{title}</h2>
-        <p>{content}</p>
+        {title && <h2>{title}</h2>}
+        <div className="modal-body">{children}</div> {/* Accepts any content */}
         <button onClick={onClose} className="modal-button">
           Close
         </button>

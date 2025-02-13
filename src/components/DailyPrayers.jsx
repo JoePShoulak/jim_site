@@ -36,13 +36,13 @@ const DailyPrayers = () => {
         ))}
       </div>
 
-      {/* Use the extracted Modal */}
+      {/* Use the extracted Modal with children */}
       <Modal
         isOpen={isModalOpen}
         onClose={closeModal}
-        title={selectedPrayer?.title}
-        content={selectedPrayer?.text}
-      />
+        title={selectedPrayer?.title}>
+        {selectedPrayer && <p>{selectedPrayer.text}</p>}
+      </Modal>
     </aside>
   );
 };

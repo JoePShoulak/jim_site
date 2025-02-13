@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import useTitle from "../hooks/useTitle";
+import img404 from "/images/404.png";
 
 const NotFound = () => {
   useTitle("Not Found");
@@ -9,11 +9,7 @@ const NotFound = () => {
       <aside></aside>
       <main>
         <div>
-          <h1>404 - Page Not Found</h1>
-          <p>The page you are looking for does not exist.</p>
-          <Link to="/" id="return-home">
-            Return to Home
-          </Link>
+          <img src={img404} />
         </div>
       </main>
       <aside></aside>
