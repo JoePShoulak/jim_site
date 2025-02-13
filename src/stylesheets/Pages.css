@@ -23,50 +23,9 @@
 }
 
 /* ===== CHAPEL ===== */
-.daily-prayers-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  justify-content: center;
-  max-width: 210px;
-  margin: auto;
-  gap: 10px;
-}
-.daily-prayer-day {
-  text-decoration: none;
-  font-size: 18px;
-  cursor: pointer;
-}
-.daily-prayer-day.highlighted {
-  color: red;
-  font-weight: bold;
-}
-
-.modal-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  width: 80%;
-  max-width: 400px;
-  z-index: 1001;
-}
-.modal-button {
-  margin-top: 10px;
-  padding: 5px 10px;
-  font-size: 16px;
-  cursor: pointer;
+#prayer-request {
+  font-size: 40px;
+  width: 300px;
 }
 
 /* ===== HYMNS ===== */
@@ -104,6 +63,10 @@ main#hymns .text-columns .right-column {
   text-align: right;
 }
 
+.song {
+  margin-bottom: 40px;
+}
+
 /* ===== WRITINGS ===== */
 aside.image-aside {
   width: 33%;
@@ -115,4 +78,11 @@ aside.image-aside div {
 
 aside.image-aside div img {
   width: 100%;
+}
+
+/* ===== NOT FOUND ===== */
+#return-home {
+  text-decoration: none;
+  color: blue;
+  font-size: 18px;
 }

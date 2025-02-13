@@ -77,3 +77,12 @@ p {
   margin-bottom: 20px;
   line-height: 1.8;
 }
+
+/* ===== MISC ===== */
+.centered-text {
+  text-align: center;
+}
+
+.full-width {
+  width: 100%;
+}

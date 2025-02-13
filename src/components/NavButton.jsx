@@ -3,11 +3,16 @@
 import { RED } from "../assets/colors";
 import { colorChange } from "../utils/colorChange";
 
-const NavButton = ({ title, description, link, color = RED }) => {
+const NavButton = ({
+  title,
+  description,
+  link,
+  color: backgroundColor = RED,
+}) => {
   const upSize = e => (e.target.style.transform = "scale(1.05)");
   const darkenButton = e =>
-    (e.target.style.backgroundColor = colorChange(color, -0.4));
-  const resetColor = e => (e.target.style.backgroundColor = color);
+    (e.target.style.backgroundColor = colorChange(backgroundColor, -0.4));
+  const resetColor = e => (e.target.style.backgroundColor = backgroundColor);
   const resetSize = e => (e.target.style.transform = "scale(1)");
   const reset = e => {
     resetColor(e), resetSize(e);
@@ -17,7 +22,7 @@ const NavButton = ({ title, description, link, color = RED }) => {
     <div className="nav-button">
       <button
         className="nav-button"
-        style={{ backgroundColor: color }}
+        style={{ backgroundColor }}
         onMouseOver={upSize}
         onMouseDown={darkenButton}
         onMouseUp={resetColor}
