@@ -25,7 +25,7 @@ const Hymns = () => {
   const [selectedSong, setSelectedSong] = useState(null);
 
   const openModal = song => {
-    setSelectedSong(song);
+    setSelectedSong({ ...song, audio: "/songs/God Gave Me Everything.m4a" }); // Override audio file
     setModalOpen(true);
   };
 
@@ -55,6 +55,10 @@ const Hymns = () => {
           <div>
             <p>Duration: {selectedSong.duration}</p>
             {selectedSong.note && <p>Note: {selectedSong.note}</p>}
+            <audio controls>
+              <source src={selectedSong.audio} type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
           </div>
         )}
       </Modal>
