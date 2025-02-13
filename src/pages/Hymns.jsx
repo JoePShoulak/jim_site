@@ -8,23 +8,23 @@ const Song = ({ title, duration, note = "" }) => (
   </p>
 );
 
+const SongColumn = ({ songs, position }) => (
+  <div className={`${position}-column`}>
+    {songs.map((song, index) => (
+      <Song key={index} {...song} />
+    ))}
+  </div>
+);
+
 const Hymns = () => {
   useTitle("Hymns");
+  const mid = Math.ceil(songs.length / 2);
 
   return (
     <main id="hymns">
       <div className="text-columns">
-        <div className="left-column">
-          {songs.leftColumn.map((song, index) => (
-            <Song key={index} {...song} />
-          ))}
-        </div>
-
-        <div className="right-column">
-          {songs.rightColumn.map((song, index) => (
-            <Song key={index} {...song} />
-          ))}
-        </div>
+        <SongColumn songs={songs.slice(0, mid)} position={"left"} />
+        <SongColumn songs={songs.slice(mid)} position={"right"} />
       </div>
     </main>
   );
