@@ -25,7 +25,7 @@ const Hymns = () => {
   const [selectedSong, setSelectedSong] = useState(null);
 
   const openModal = song => {
-    setSelectedSong({ ...song, audio: "/songs/God Gave Me Everything.m4a" }); // Override audio file
+    setSelectedSong({ ...song }); // Override audio file
     setModalOpen(true);
   };
 
@@ -52,8 +52,10 @@ const Hymns = () => {
         title={selectedSong?.title}>
         {selectedSong && (
           <div>
-            <p>Duration: {selectedSong.duration}</p>
             {selectedSong.note && <p>Note: {selectedSong.note}</p>}
+            {selectedSong.description && (
+              <p>Description: {selectedSong.description}</p>
+            )}
             <audio controls>
               <source src={selectedSong.audio} type="audio/mpeg" />
               Your browser does not support the audio element.
