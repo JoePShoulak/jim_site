@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import prayers from "../data/prayers.json"; // Import prayer data
 import { useState } from "react";
 
@@ -21,23 +22,23 @@ const DailyPrayers = () => {
     }
   };
 
+  const CalendarDay = ({ day }) => {
+    const classes = `daily-prayer-day ${isToday(day) ? "highlighted" : ""}`;
+
+    return (
+      <span className={classes} onClick={() => openModal(day)}>
+        {day}
+      </span>
+    );
+  };
+
   return (
     <aside className="daily-prayers-container">
       <h2>Daily Prayers</h2>
       <div className="daily-prayers-grid">
-        {[...Array(31)].map((_, i) => {
-          const day = i + 1;
-          return (
-            <span
-              key={day}
-              className={`daily-prayer-day ${
-                isToday(day) ? "highlighted" : ""
-              }`}
-              onClick={() => openModal(day)}>
-              {day}
-            </span>
-          );
-        })}
+        {[...Array(31)].map((_, i) => (
+          <CalendarDay key={i} day={i + 1} />
+        ))}
       </div>
 
       {isModalOpen && selectedPrayer && (

@@ -3,7 +3,7 @@ import useTitle from "../hooks/useTitle";
 import songs from "../data/songs.json";
 
 const Song = ({ title, duration, note = "" }) => (
-  <p style={{ marginBottom: "40px" }}>
+  <p className="song">
     {title} {note && `[${note}]`} ({duration})
   </p>
 );
