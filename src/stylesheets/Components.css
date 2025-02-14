@@ -35,9 +35,20 @@ header {
   font-size: 64px;
 }
 
+#banner {
+  flex-grow: 1;
+  height: 160px;
+  text-align: center;
+  background-image: url(/images/bishop-cross.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 #subtitle {
   font-weight: bold;
   font-size: 24px;
+  justify-self: bottom;
 }
 
 #page-name {
@@ -49,16 +60,6 @@ header {
   font-size: 48px;
   font-weight: bold;
   white-space: nowrap;
-}
-
-#banner {
-  flex-grow: 1;
-  height: 160px;
-  text-align: center;
-  background-image: url(/images/bishop-cross.png);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 /* ===== FOOTER ===== */
