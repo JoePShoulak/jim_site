@@ -1,84 +1,98 @@
-// import useTitle from "../hooks/useTitle";
-// import lighthouse from "/images/lighthouse.jpeg";
-// import elephant_oak from "/images/elephant_oak.jpg";
-// const superior_sunset = "/images/superior_sunset.JPG";
-
-// import { WATER_BLUE, OAK_GREEN, SUNSET_ORANGE } from "../assets/colors";
-
-// // TODO: Replace this all with a tabbed main section
-
-// const ImageAside = ({ image, color, label }) => (
-//   <aside className="image-aside">
-//     <div>
-//       <img src={image} />
-//       <h1 style={{ color }}>{label}</h1>
-//     </div>
-//   </aside>
-// );
-
-// const imageContents = [
-//   {
-//     image: lighthouse,
-//     color: WATER_BLUE,
-//     label: "Sermon Excerpts by Scripture",
-//   },
-//   { image: elephant_oak, color: OAK_GREEN, label: "Reflections and Poetry" },
-//   { image: superior_sunset, color: SUNSET_ORANGE, label: "Humble Prayers" },
-// ];
-
-// const Writings = () => {
-//   useTitle("Writings");
-
-//   return (
-//     <main>
-//       {imageContents.map((content, i) => (
-//         <ImageAside key={i} {...content} />
-//       ))}
-//     </main>
-//   );
-// };
+import { useState } from "react";
+import Modal from "../components/Modal"; // Adjust the path as needed
+import lighthouse from "/images/lighthouse.jpeg";
+import elephant_oak from "/images/elephant_oak.jpg";
+const superior_sunset = "/images/superior_sunset.JPG";
 
 import TabbedSections from "../components/TabbedSection";
+import writings from "../data/writings.json";
+
+const rootStyles = getComputedStyle(document.documentElement);
+const blue = rootStyles.getPropertyValue("--water-blue").trim();
+const green = rootStyles.getPropertyValue("--oak-green").trim();
+const orange = rootStyles.getPropertyValue("--sunset-orange").trim();
+
+const TabContent = ({ content, img, imgAlt, color }) => {
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const ModalLink = ({ item }) => {
+    const [hovered, setHovered] = useState(false);
+
+    return (
+      <p>
+        <a
+          onClick={() => setSelectedItem(item)}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          style={{ color: hovered ? color : "black" }}>
+          {item.title}
+        </a>
+      </p>
+    );
+  };
+
+  return (
+    <div className="two-column-content">
+      <div className="column">
+        {content.map((item, i) => (
+          <ModalLink key={i} item={item} />
+        ))}
+      </div>
+      <div className="column">
+        <img src={img} alt={imgAlt} />
+      </div>
+      {selectedItem && (
+        <Modal title={selectedItem.title} onClose={() => setSelectedItem(null)}>
+          <p>{selectedItem.content}</p>
+        </Modal>
+      )}
+    </div>
+  );
+};
+
+const tabs = [
+  {
+    label: "Poetry",
+    content: (
+      <TabContent
+        content={writings.poetry}
+        img={lighthouse}
+        color={blue}
+        imgAlt="a lighthouse"
+      />
+    ),
+  },
+  {
+    label: "Essays",
+    content: (
+      <TabContent
+        content={writings.letters}
+        img={elephant_oak}
+        color={green}
+        imgAlt="a large oak tree"
+      />
+    ),
+  },
+  {
+    label: "Short Stories",
+    content: (
+      <TabContent
+        content={writings.writings}
+        img={superior_sunset}
+        color={orange}
+        imgAlt="a sunset over lake superior"
+      />
+    ),
+  },
+];
 
 const LeftAside = () => <aside>Left Aside</aside>;
 
-const CenterSection = () => {
-  const tabs = [
-    {
-      label: "Poetry",
-      content: (
-        <div>
-          <h4>Poetry</h4>
-          <p>This is some poetry content...</p>
-        </div>
-      ),
-    },
-    {
-      label: "Essays",
-      content: (
-        <div>
-          <h4>Essays</h4>
-          <p>This is some essay content...</p>
-        </div>
-      ),
-    },
-    {
-      label: "Short Stories",
-      content: (
-        <div>
-          <h4>Short Stories</h4>
-          <p>This is some short stories content...</p>
-        </div>
-      ),
-    },
-  ];
-
-  return (
-    <section>
-      <TabbedSections tabs={tabs} />
-    </section>
-  );
-};
+const CenterSection = () => (
+  <section>
+    <TabbedSections tabs={tabs} />
+  </section>
+);
 
 const RightAside = () => <aside>Right Aside</aside>;
 

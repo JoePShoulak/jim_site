@@ -4,7 +4,7 @@ import Modal from "../components/Modal";
 
 const Song = ({ title, duration, onClick }) => (
   <p className="song">
-    <a onClick={onClick} style={{ cursor: "pointer" }}>
+    <a onClick={onClick}>
       {title} ({duration})
     </a>
   </p>

@@ -109,10 +109,8 @@ footer {
   }
 }
 
-.song a {
-  &:hover {
+.song a:hover {
     color: colors.$highlight;
-  }
 }
 
 .tabbed-section {
@@ -147,3 +145,20 @@ footer {
     }
   }
 }
+
+.two-column-content {
+  display: flex;
+  width: 100%;
+}
+
+.column {
+  flex: 1;
+}
+
+.column img {
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+

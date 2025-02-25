@@ -11,8 +11,37 @@ $dark-navy: #2f2e36;
 $mocha-mousse: #a57866;
 $fall-leaf: #282828;
 
+$water-blue: #568BC4;
+$oak-green: #697337;
+$sunset-orange: #D45A63;
+
 $background: $dark-navy;
 $background-light: #f4f4f4;
 $text-light: $dad-gray;
 $highlight: $suntan;
 
+// for JSX purposes, to be able to query the colors
+
+:root {
+  --cranberry: #{$cranberry};
+  --parchment: #{$parchment};
+  --suntan: #{$suntan};
+  --light-pine: #{$light-pine};
+  --dark-pine: #{$dark-pine};
+  --pumpkin: #{$pumpkin};
+  --silver-pine: #{$silver-pine};
+  --matte-green: #{$matte-green};
+  --dad-gray: #{$dad-gray};
+  --dark-navy: #{$dark-navy};
+  --mocha-mousse: #{$mocha-mousse};
+  --fall-leaf: #{$fall-leaf};
+
+  --water-blue: #{$water-blue};
+  --oak-green: #{$oak-green};
+  --sunset-orange: #{$sunset-orange};
+  
+  --background: #{$background};
+  --background-light: #{$background-light};
+  --text-light: #{$text-light};
+  --highlight: #{$highlight};
+}
