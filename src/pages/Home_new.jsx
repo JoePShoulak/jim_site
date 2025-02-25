@@ -1,8 +1,16 @@
 const Home = () => {
   return (
-    <div>
-      <p>Home Page</p>
-    </div>
+    <main>
+      <aside>
+        <p>Left Aside</p>
+      </aside>
+      <section>
+        <p>Main Section</p>
+      </section>
+      <aside>
+        <p>Right Aside</p>
+      </aside>
+    </main>
   );
 };
 

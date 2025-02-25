@@ -1,0 +1,17 @@
+main {
+  display: flex;
+  width: 100%;
+  height: 100vh; /* Optional: fill the viewport height */
+}
+
+aside {
+  flex: 1; /* 1/4 of the space */
+  background-color: #f4f4f4; /* optional background */
+  padding: 20px;
+}
+
+section {
+  flex: 2; /* 1/2 of the space */
+  background-color: #fff;
+  padding: 20px;
+}
