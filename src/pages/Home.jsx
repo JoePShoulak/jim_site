@@ -1,7 +1,7 @@
 import footwashingImage from "/images/footwashing.png";
 import signatureImage from "/images/signature.png";
 
-const Welcome = () => (
+const LeftAside = () => (
   <aside>
     <h3>Welcome!</h3>
     <p>
@@ -13,14 +13,14 @@ const Welcome = () => (
   </aside>
 );
 
-const MainImage = () => (
+const CenterSection = () => (
   <section>
     <img src={footwashingImage} alt="footwashing art" />
     <p>Illustration by Joe G. Shoulak</p>
   </section>
 );
 
-const Disclaimer = () => (
+const RightAside = () => (
   <aside>
     <p>
       Scripture quotations are from New Revised Standard Version Bible,
@@ -40,9 +40,9 @@ const Disclaimer = () => (
 
 const Home = () => (
   <>
-    <Welcome />
-    <MainImage />
-    <Disclaimer />
+    <LeftAside />
+    <CenterSection />
+    <RightAside />
   </>
 );
 

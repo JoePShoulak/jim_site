@@ -1,37 +1,51 @@
-import myGif from "/images/candle.gif";
-import useTitle from "../hooks/useTitle";
-import { DailyPrayers } from "../components/DailyPrayers";
+import candleGif from "/images/candle.gif";
+import chapelImage from "/images/chapel_main.jpg";
 
-const ChapelImage = () => (
-  <section>
-    <img src="/images/chapel_main.jpg" className="full-width" />
-  </section>
-);
+const Calendar = () => {
+  const days = Array.from({ length: 31 }, (_, i) => i + 1);
 
-const PrayerRequest = () => (
+  return (
+    <>
+      <h3>Daily Prayers</h3>
+      <div className="calendar">
+        {days.map(day => (
+          <div key={day}>{day}</div>
+        ))}
+      </div>
+    </>
+  );
+};
+
+const LeftAside = () => (
   <aside>
-    <div className="centered-text">
-      <h3 id="prayer-request">
-        Prayer Requests <br />
-        (click to email)
-      </h3>
-      <a href="mailto:jimbro58@me.com">
-        <img src={myGif} alt="Flickering candle" width="300px" />
-      </a>
-    </div>
+    <Calendar />
   </aside>
 );
 
-const Chapel = () => {
-  useTitle("Chapel");
+const CenterSection = () => (
+  <section>
+    <img src={chapelImage} alt="benches in light woods near a pond" />
+  </section>
+);
 
-  return (
-    <main>
-      <DailyPrayers />
-      <ChapelImage />
-      <PrayerRequest />
-    </main>
-  );
-};
+const RightAside = () => (
+  <aside>
+    <h3 id="prayer-request">
+      Prayer Requests <br />
+      (click to email)
+    </h3>
+    <a href="mailto:jimbro58@me.com">
+      <img src={candleGif} alt="Flickering candle" width="300px" />
+    </a>
+  </aside>
+);
+
+const Chapel = () => (
+  <>
+    <LeftAside />
+    <CenterSection />
+    <RightAside />
+  </>
+);
 
 export default Chapel;
