@@ -1,13 +1,17 @@
 @use "./colors.scss";
 @use 'sass:color';
 
-header {
+dark-banner {
   width: 100%;
   background-color: colors.$background;
   color: colors.$text-light;
+  text-align: center;
+}
+
+header {
+  @extend dark-banner;
   padding: 20px;
   box-sizing: border-box;
-  text-align: center;
   margin: 0;
 }
 
@@ -38,12 +42,9 @@ nav {
 }
 
 footer {
+  @extend dark-banner;
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
-  background-color: colors.$background;
-  color: colors.$text-light;
-  text-align: center;
   padding: 10px 0;
 }
