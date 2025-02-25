@@ -10,6 +10,7 @@ const LeftAside = () => (
 
 const CenterSection = () => (
   <section>
+    <h2>Chapel</h2>
     <img src={chapelImage} alt="benches in light woods near a pond" />
   </section>
 );

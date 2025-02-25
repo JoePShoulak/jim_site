@@ -1,6 +1,10 @@
 const LeftAside = () => <aside></aside>;
 
-const CenterSection = () => <section></section>;
+const CenterSection = () => (
+  <section>
+    <h2>Diaconate</h2>
+  </section>
+);
 
 const RightAside = () => <aside></aside>;
 

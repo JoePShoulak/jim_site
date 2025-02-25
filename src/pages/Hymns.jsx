@@ -24,6 +24,7 @@ const LeftAside = () => <aside></aside>;
 
 const CenterSection = ({ onSongClick }) => (
   <section>
+    <h2>Hymns</h2>
     {songs.map((song, index) => (
       <Song key={index} {...song} onClick={() => onSongClick(song)} />
     ))}

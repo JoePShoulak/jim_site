@@ -15,6 +15,7 @@ const LeftAside = () => (
 
 const CenterSection = () => (
   <section>
+    <h2>Home</h2>
     <img src={footwashingImage} alt="footwashing art" />
     <p>Illustration by Joe G. Shoulak</p>
   </section>
