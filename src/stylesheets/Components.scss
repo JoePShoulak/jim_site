@@ -73,7 +73,6 @@ footer {
   }
 }
 
-/* Modal overlay and content styling */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -116,4 +115,35 @@ footer {
   }
 }
 
+.tabbed-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 
+  .tab-buttons {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+
+    button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      background-color: #f7f7f7;
+      border-bottom: none;
+
+      &.active {
+        background-color: #ddd;
+        border-bottom: 2px solid #333;
+        cursor: default;
+      }
+    }
+
+    .tab-content {
+      flex: 1;
+      padding: 20px;
+      overflow: auto;
+    }
+  }
+}

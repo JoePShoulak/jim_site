@@ -7,17 +7,6 @@ main {
   flex: 1;
 }
 
-
-aside, section {
-  min-width: 0;
-
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-}
-
 aside {
   flex: 1;
   background-color: colors.$background-light;
