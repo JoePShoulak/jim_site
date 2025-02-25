@@ -1,0 +1,49 @@
+@use "./colors.scss";
+@use 'sass:color';
+
+header {
+  width: 100%;
+  background-color: colors.$background;
+  color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  background-color: color.scale(colors.$background, $lightness: 15%);
+
+  a {
+    flex: 1;
+    text-align: center;
+    padding: 15px 0;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    &:hover,
+    &.active {
+      background-color: color.scale(colors.$background, $lightness: 25%);
+    }
+
+    &.active {
+      pointer-events: none;
+    }
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: colors.$background;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}

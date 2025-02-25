@@ -1,4 +1,4 @@
-import "./stylesheets/App.css";
+import "./stylesheets/App.scss";
 import {
   Home,
   Chapel,
