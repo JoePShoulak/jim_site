@@ -1,20 +1,21 @@
-import useTitle from "../hooks/useTitle";
 import img404 from "/images/404.png";
 
-const NotFound = () => {
-  useTitle("Not Found");
+const LeftAside = () => <aside></aside>;
 
-  return (
-    <main>
-      <aside></aside>
-      <main>
-        <div>
-          <img src={img404} />
-        </div>
-      </main>
-      <aside></aside>
-    </main>
-  );
-};
+const CenterSection = () => (
+  <section>
+    <img src={img404} />
+  </section>
+);
+
+const RightAside = () => <aside></aside>;
+
+const NotFound = () => (
+  <>
+    <LeftAside />
+    <CenterSection />
+    <RightAside />
+  </>
+);
 
 export default NotFound;
