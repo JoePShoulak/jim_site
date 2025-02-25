@@ -30,11 +30,6 @@ header {
   margin-right: 15px;
 }
 
-#title {
-  font-family: RomanAntique, serif;
-  font-size: 64px;
-}
-
 #banner {
   flex-grow: 1;
   height: 160px;
@@ -43,6 +38,11 @@ header {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+#title {
+  font-family: RomanAntique, serif;
+  font-size: 64px;
 }
 
 #subtitle {
