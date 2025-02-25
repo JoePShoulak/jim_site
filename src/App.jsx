@@ -15,6 +15,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { NavBar } from "./components/NavBar";
 
 const UnknownPage = () => {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ const UnknownPage = () => {
 const App = () => (
   <Router>
     <Header />
+    <NavBar />
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/chapel" element={<Chapel />} />

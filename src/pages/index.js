@@ -1,4 +1,4 @@
-export { default as Home } from "./Home";
+export { default as Home } from "./Home_new";
 export { default as Chapel } from "./Chapel";
 export { default as Writings } from "./Writings";
 export { default as Hymns } from "./Hymns";
