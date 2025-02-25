@@ -31,18 +31,20 @@ const App = () => (
   <Router>
     <Header />
     <NavBar />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/chapel" element={<Chapel />} />
-      <Route path="/writings" element={<Writings />} />
-      <Route path="/hymns" element={<Hymns />} />
-      <Route path="/diaconate" element={<Diaconate />} />
-      <Route path="/shop" element={<Shop />} />
-      <Route path="/contact" element={<Contact />} />
+    <main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/chapel" element={<Chapel />} />
+        <Route path="/writings" element={<Writings />} />
+        <Route path="/hymns" element={<Hymns />} />
+        <Route path="/diaconate" element={<Diaconate />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/contact" element={<Contact />} />
 
-      <Route path="*" element={<UnknownPage />} />
-      <Route path="/not_found" element={<NotFound />} />
-    </Routes>
+        <Route path="*" element={<UnknownPage />} />
+        <Route path="/not_found" element={<NotFound />} />
+      </Routes>
+    </main>
     <Footer />
   </Router>
 );
