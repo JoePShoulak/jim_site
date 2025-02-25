@@ -28,25 +28,27 @@ const UnknownPage = () => {
 };
 
 const App = () => (
-  <Router>
+  <>
     <Header />
     <NavBar />
-    <main>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/chapel" element={<Chapel />} />
-        <Route path="/writings" element={<Writings />} />
-        <Route path="/hymns" element={<Hymns />} />
-        <Route path="/diaconate" element={<Diaconate />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/contact" element={<Contact />} />
+    <Router>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/chapel" element={<Chapel />} />
+          <Route path="/writings" element={<Writings />} />
+          <Route path="/hymns" element={<Hymns />} />
+          <Route path="/diaconate" element={<Diaconate />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/contact" element={<Contact />} />
 
-        <Route path="*" element={<UnknownPage />} />
-        <Route path="/not_found" element={<NotFound />} />
-      </Routes>
-    </main>
+          <Route path="*" element={<UnknownPage />} />
+          <Route path="/not_found" element={<NotFound />} />
+        </Routes>
+      </main>
+    </Router>
     <Footer />
-  </Router>
+  </>
 );
 
 export default App;
