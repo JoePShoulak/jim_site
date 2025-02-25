@@ -1,67 +1,47 @@
-/* eslint-disable react/prop-types */
 import { useState } from "react";
-import useTitle from "../hooks/useTitle";
 import songs from "../data/songs.json";
 import Modal from "../components/Modal";
 
-const Song = ({ title, duration, note = "", onClick }) => (
-  <p className="song" onClick={onClick} style={{ cursor: "pointer" }}>
-    {title} {note && `[${note}]`} ({duration})
+const Song = ({ title, duration, onClick }) => (
+  <p className="song">
+    <a onClick={onClick} style={{ cursor: "pointer" }}>
+      {title} ({duration})
+    </a>
   </p>
 );
 
-const SongColumn = ({ songs, position, onSongClick }) => (
-  <div className={`${position}-column`}>
+const SongModal = ({ song, onClose }) => (
+  <Modal title={song.title} onClose={onClose}>
+    <audio controls>
+      <source src={song.audio} type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    {song.description && <p>{song.description}</p>}
+  </Modal>
+);
+
+const LeftAside = () => <aside></aside>;
+
+const CenterSection = ({ onSongClick }) => (
+  <section>
     {songs.map((song, index) => (
       <Song key={index} {...song} onClick={() => onSongClick(song)} />
     ))}
-  </div>
+  </section>
 );
 
+const RightAside = () => <aside></aside>;
+
 const Hymns = () => {
-  useTitle("Hymns");
-  const mid = Math.ceil(songs.length / 2);
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [selectedSong, setSelectedSong] = useState(null);
-
-  const openModal = song => {
-    setSelectedSong({ ...song });
-    setModalOpen(true);
-  };
-
-  const closeModal = () => setModalOpen(false);
+  const [song, setSong] = useState(null);
 
   return (
-    <main id="hymns">
-      <div className="text-columns">
-        <SongColumn
-          songs={songs.slice(0, mid)}
-          position={"left"}
-          onSongClick={openModal}
-        />
-        <SongColumn
-          songs={songs.slice(mid)}
-          position={"right"}
-          onSongClick={openModal}
-        />
-      </div>
-
-      <Modal
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        title={selectedSong?.title}>
-        {selectedSong && (
-          <div>
-            {selectedSong.note && <p>Note: {selectedSong.note}</p>}
-            <p>Description: {selectedSong.description || selectedSong.title}</p>
-            <audio controls>
-              <source src={selectedSong.audio} type="audio/mpeg" />
-              Your browser does not support the audio element.
-            </audio>
-          </div>
-        )}
-      </Modal>
-    </main>
+    <>
+      <LeftAside />
+      <CenterSection onSongClick={setSong} />
+      <RightAside />
+      {song && <SongModal song={song} onClose={() => setSong(null)} />}
+    </>
   );
 };
 

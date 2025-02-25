@@ -2,11 +2,15 @@ import { useState } from "react";
 import Modal from "./Modal";
 import prayers from "../data/prayers.json";
 
-const PrayerModal = ({ day, onClose }) => (
-  <Modal title={`Prayer for day ${day}`} onClose={onClose}>
-    <p>{prayers[day - 1].text}</p>
-  </Modal>
-);
+const PrayerModal = ({ day, onClose }) => {
+  const prayer = prayers[day - 1];
+
+  return (
+    <Modal title={prayer.title} onClose={onClose}>
+      <p>{prayer.text}</p>
+    </Modal>
+  );
+};
 
 const Calendar = () => {
   const [day, setDay] = useState(null);

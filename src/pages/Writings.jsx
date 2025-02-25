@@ -1,10 +1,11 @@
-/* eslint-disable react/prop-types */
 import useTitle from "../hooks/useTitle";
 import lighthouse from "/images/lighthouse.jpeg";
 import elephant_oak from "/images/elephant_oak.jpg";
 const superior_sunset = "/images/superior_sunset.JPG";
 
 import { WATER_BLUE, OAK_GREEN, SUNSET_ORANGE } from "../assets/colors";
+
+// TODO: Replace this all with a tabbed main section
 
 const ImageAside = ({ image, color, label }) => (
   <aside className="image-aside">

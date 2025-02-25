@@ -95,4 +95,25 @@ footer {
   max-height: 90%;
   overflow: auto;
   position: relative;
+  min-width: 400px;
+
+  audio {
+    display: block;
+    width: 100%;
+    margin-bottom: 1em;
+  }
+
+  button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
+
+.song a {
+  &:hover {
+    color: colors.$highlight;
+  }
+}
+
+
