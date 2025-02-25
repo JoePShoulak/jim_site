@@ -4,8 +4,11 @@
 main {
   display: flex;
   width: 100%;
-  flex: 1;
+  flex: 1; /* Allows it to take up all remaining space */
+  min-height: 0; /* Prevents flex issues when shrinking */
+  overflow: hidden; /* Prevents unnecessary scrolling */
 }
+
 
 aside {
   flex: 1;

@@ -88,7 +88,7 @@ const tabs = [
   },
 ];
 
-const LeftAside = () => <aside>Left Aside</aside>;
+const LeftAside = () => <aside></aside>;
 
 const CenterSection = () => (
   <section>
@@ -97,7 +97,7 @@ const CenterSection = () => (
   </section>
 );
 
-const RightAside = () => <aside>Right Aside</aside>;
+const RightAside = () => <aside></aside>;
 
 const Writings = () => (
   <>

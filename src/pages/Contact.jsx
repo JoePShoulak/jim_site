@@ -2,7 +2,7 @@ const LeftAside = () => <aside></aside>;
 
 const CenterSection = () => (
   <section>
-    <h1>About</h1>
+    <h2>About</h2>
     <p>
       Jim Shoulak was born and raised in Wisconsin. He’s been married to Judy
       for 40 years, and they have 3 children. They currently live in Minnesota.
