@@ -1,7 +1,11 @@
+:root {
+  --background-color: #333;
+}
+
 /* HEADER */
 header {
   width: 100%;
-  background-color: #333;
+  background-color: var(--background-color);
   color: #fff;
   padding: 20px;
   box-sizing: border-box;
@@ -14,12 +18,12 @@ nav {
   display: flex;
   margin: 0;
   padding: 0;
-  background-color: #333;
+  background-color: var(--background-color);
+  /* filter: brightness(1.5); */
 }
 
 nav a {
   flex: 1;
-  background-color: #444;
   text-align: center;
   padding: 15px 0;
   color: #fff;
@@ -29,7 +33,15 @@ nav a {
 }
 
 nav a:hover {
-  background-color: #666;
+  background-color: var(--background-color);
+  /* filter: brightness(1.5); */
+}
+
+/* Active state: styled as hovered and unclickable */
+nav a.active {
+  background-color: var(--background-color);
+  /* filter: brightness(1.5); */
+  pointer-events: none;
 }
 
 /* FOOTER */
@@ -38,7 +50,7 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #333;
+  background-color: var(--background-color);
   color: #fff;
   text-align: center;
   padding: 10px 0;
