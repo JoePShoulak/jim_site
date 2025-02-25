@@ -10,38 +10,38 @@ const Song = ({ title, duration, onClick }) => (
   </p>
 );
 
-const SongModal = ({ song, onClose }) => (
-  <Modal title={song.title} onClose={onClose}>
-    <audio controls>
-      <source src={song.audio} type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
-    {song.description && <p>{song.description}</p>}
-  </Modal>
-);
-
 const LeftAside = () => <aside></aside>;
-
-const CenterSection = ({ onSongClick }) => (
-  <section>
-    <h2>Hymns</h2>
-    {songs.map((song, index) => (
-      <Song key={index} {...song} onClick={() => onSongClick(song)} />
-    ))}
-  </section>
-);
 
 const RightAside = () => <aside></aside>;
 
 const Hymns = () => {
   const [song, setSong] = useState(null);
 
+  const SongModal = () => (
+    <Modal title={song.title} onClose={() => setSong(null)}>
+      <audio controls>
+        <source src={song.audio} type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      {song.description && <p>{song.description}</p>}
+    </Modal>
+  );
+
+  const CenterSection = () => (
+    <section>
+      <h2>Hymns</h2>
+      {songs.map((song, index) => (
+        <Song key={index} {...song} onClick={() => setSong(song)} />
+      ))}
+    </section>
+  );
+
   return (
     <>
       <LeftAside />
-      <CenterSection onSongClick={setSong} />
+      <CenterSection />
       <RightAside />
-      {song && <SongModal song={song} onClose={() => setSong(null)} />}
+      {song && <SongModal />}
     </>
   );
 };
