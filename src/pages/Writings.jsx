@@ -92,6 +92,7 @@ const LeftAside = () => <aside>Left Aside</aside>;
 
 const CenterSection = () => (
   <section>
+    <h2>Writings</h2>
     <TabbedSections tabs={tabs} />
   </section>
 );
