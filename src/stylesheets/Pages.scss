@@ -1,14 +1,12 @@
 @use "./colors.scss";
 
-
 main {
   display: flex;
   width: 100%;
-  flex: 1; /* Allows it to take up all remaining space */
-  min-height: 0; /* Prevents flex issues when shrinking */
-  overflow: hidden; /* Prevents unnecessary scrolling */
+  flex: 1; 
+  min-height: 0;
+  overflow: hidden;
 }
-
 
 aside {
   flex: 1;
