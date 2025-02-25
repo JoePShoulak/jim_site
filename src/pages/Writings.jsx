@@ -1,10 +1,12 @@
 import { useState } from "react";
-import Modal from "../components/Modal"; // Adjust the path as needed
+
+import Modal from "../components/Modal";
 import lighthouse from "/images/lighthouse.jpeg";
 import elephant_oak from "/images/elephant_oak.jpg";
 const superior_sunset = "/images/superior_sunset.JPG";
 
 import TabbedSections from "../components/TabbedSection";
+
 import writings from "../data/writings.json";
 
 const rootStyles = getComputedStyle(document.documentElement);
