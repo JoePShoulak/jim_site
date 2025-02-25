@@ -1,20 +1,15 @@
-import useTitle from "../hooks/useTitle";
+const LeftAside = () => <aside></aside>;
 
-const Diaconate = () => {
-  useTitle("Diaconate");
+const CenterSection = () => <section></section>;
 
-  return (
-    <main>
-      <aside></aside>
-      <main>
-        <div>
-          <h1>Diaconate</h1>
-          <p>Diaconate</p>
-        </div>
-      </main>
-      <aside></aside>
-    </main>
-  );
-};
+const RightAside = () => <aside></aside>;
+
+const Diaconate = () => (
+  <>
+    <LeftAside />
+    <CenterSection />
+    <RightAside />
+  </>
+);
 
 export default Diaconate;

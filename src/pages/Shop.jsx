@@ -1,20 +1,15 @@
-import useTitle from "../hooks/useTitle";
+const LeftAside = () => <aside></aside>;
 
-const Shop = () => {
-  useTitle("Shop");
+const CenterSection = () => <section></section>;
 
-  return (
-    <main>
-      <aside></aside>
-      <main>
-        <div>
-          <h1>Shop</h1>
-          <p>Shop</p>
-        </div>
-      </main>
-      <aside></aside>
-    </main>
-  );
-};
+const RightAside = () => <aside></aside>;
+
+const Shop = () => (
+  <>
+    <LeftAside />
+    <CenterSection />
+    <RightAside />
+  </>
+);
 
 export default Shop;
