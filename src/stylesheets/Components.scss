@@ -58,12 +58,16 @@ footer {
   margin: 0 auto;
   
   div {
-    background: #f4f4f4;
+    background: white;
     border: 1px solid #ccc;
     text-align: center;
     aspect-ratio: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  div.today {
+    background-color: colors.$suntan; /* or any color you prefer */
   }
 }

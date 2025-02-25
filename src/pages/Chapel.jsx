@@ -3,13 +3,16 @@ import chapelImage from "/images/chapel_main.jpg";
 
 const Calendar = () => {
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
+  const today = new Date().getDate(); // Get today's day number
 
   return (
     <>
       <h3>Daily Prayers</h3>
       <div className="calendar">
         {days.map(day => (
-          <div key={day}>{day}</div>
+          <div key={day} className={day == today ? "today" : ""}>
+            {day}
+          </div>
         ))}
       </div>
     </>
