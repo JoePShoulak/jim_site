@@ -2,12 +2,9 @@ import { useState } from "react";
 import Modal from "./Modal";
 
 const ContactForm = ({ isOpen, onClose }) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "", // <-- New dropdown field
-    message: "",
-  });
+  const nullState = { name: "", email: "", subject: "", message: "" };
+
+  const [formData, setFormData] = useState(nullState);
 
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,8 +14,8 @@ const ContactForm = ({ isOpen, onClose }) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
     alert("Form submitted! Check console for details.");
-    setFormData({ name: "", email: "", subject: "", message: "" }); // Reset form
-    onClose(); // Close modal after submit
+    setFormData(nullState);
+    onClose();
   };
 
   return (
