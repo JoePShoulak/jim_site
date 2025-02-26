@@ -1,4 +1,5 @@
 import "./stylesheets/App.scss";
+
 import {
   Home,
   Chapel,
@@ -16,6 +17,7 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
+
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { useEffect } from "react";
@@ -31,20 +33,13 @@ const UnknownPage = () => {
   return null;
 };
 
-const capitalizeWord = word => word.charAt(0).toUpperCase() + word.slice(1);
+const parseTitle = word =>
+  (word.charAt(0).toUpperCase() + word.slice(1)).replace("/", "");
 
+// TODO: Fix that the title "flickers" top the true URL before updating correctly
 const PageTitleUpdater = () => {
-  let location = useLocation().pathname;
-  // TODO: Fix that the title "flickers" top the true URL before updating correctly
-
-  useEffect(() => {
-    location =
-      location == "/" ? "Home" : capitalizeWord(location.replace("/", ""));
-
-    document.title = `PB&T | ${location}`;
-  }, [location]);
-
-  return null;
+  const location = useLocation().pathname;
+  document.title = `PB&T | ${location == "/" ? "Home" : parseTitle(location)}`;
 };
 
 const App = () => (
