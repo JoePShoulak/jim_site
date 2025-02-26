@@ -1,5 +1,7 @@
+@use 'sass:color';
 @use"./Pages.scss";
 @use "./Components.scss";
+@use './colors.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
@@ -38,4 +40,23 @@ h3 {
 
 a {
   cursor: pointer;
+}
+
+button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: color.scale(colors.$background, $lightness: 15%);
+  border-radius: 5px;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: colors.$button-text;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  padding: 5px 10px;
+  
+  &:hover {
+    background-color: color.scale(colors.$background, $lightness: 25%);
+  }
 }
