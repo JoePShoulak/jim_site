@@ -22,7 +22,7 @@ const CenterSection = () => (
 );
 
 const RightAside = () => (
-  <aside>
+  <aside id="disclaimer">
     <p>
       Scripture quotations are from New Revised Standard Version Bible,
       copyright © 1989 National Council of the Churches of Christ in the United

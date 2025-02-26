@@ -28,7 +28,7 @@ const Header = () => (
   <>
     <header>
       <img src={logo} alt="St. Stephen's Chapel Logo" className="logo" />
-      <h1>St. Stephen&apos;s Chapel</h1>
+      <h1>Pitcher, Basin, & Towel</h1>
     </header>
     <NavBar />
   </>

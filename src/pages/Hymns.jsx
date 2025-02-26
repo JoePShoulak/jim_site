@@ -30,9 +30,14 @@ const Hymns = () => {
   const CenterSection = () => (
     <section>
       <h2>Hymns</h2>
-      {songs.map((song, index) => (
-        <Song key={index} {...song} onClick={() => setSong(song)} />
-      ))}
+      <div className="two-column-content">
+        <div className="column">
+          {songs.map((song, index) => (
+            <Song key={index} {...song} onClick={() => setSong(song)} />
+          ))}
+        </div>
+        <div className="column"></div>
+      </div>
     </section>
   );
 

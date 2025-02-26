@@ -65,7 +65,7 @@ const tabs = [
     ),
   },
   {
-    label: "Essays",
+    label: "Prayers",
     content: (
       <TabContent
         content={writings.letters}
@@ -76,7 +76,7 @@ const tabs = [
     ),
   },
   {
-    label: "Short Stories",
+    label: "Commentaries",
     content: (
       <TabContent
         content={writings.writings}
