@@ -1,4 +1,4 @@
-import logo from "/images/logo.png";
+import logo from "/images/original/logo.png";
 import buttonProps from "../data/buttonProps.json";
 
 const NavButton = ({ link, label, description, isActive }) => (

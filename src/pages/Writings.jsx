@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 import Modal from "../components/Modal";
-import lighthouse from "/images/lighthouse.jpeg";
-import elephant_oak from "/images/elephant_oak.jpg";
-const superior_sunset = "/images/superior_sunset.JPG";
+import lighthouse from "/images/original/lighthouse.jpeg";
+import elephant_oak from "/images/original/elephant_oak.jpg";
+const superior_sunset = "/images/original/superior_sunset.JPG";
 
 import TabbedSections from "../components/TabbedSection";
 

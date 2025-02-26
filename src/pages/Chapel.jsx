@@ -1,5 +1,5 @@
-import candleGif from "/images/candle.gif";
-import chapelImage from "/images/chapel_main.jpg";
+import candleGif from "/images/original/candle.gif";
+import chapelImage from "/images/original/chapel_main.jpg";
 import { Calendar } from "../components/Calendar";
 
 const LeftAside = () => (

@@ -1,4 +1,4 @@
-import img404 from "/images/404.png";
+import img404 from "/images/original/404.png";
 
 const LeftAside = () => <aside></aside>;
 
