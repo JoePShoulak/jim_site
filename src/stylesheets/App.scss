@@ -56,7 +56,11 @@ button {
   transition: background-color 0.2s ease;
   padding: 5px 10px;
   
-  &:hover {
+  &:hover, &:disabled {
     background-color: color.scale(colors.$background, $lightness: 25%);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 }

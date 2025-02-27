@@ -10,12 +10,16 @@ const ContactForm = ({ isOpen, onClose }) => {
     message: "",
   });
 
+  const [isSending, setIsSending] = useState(false); // Track sending state
+  const [errorMessage, setErrorMessage] = useState(""); // Store error messages
+
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
+    setIsSending(true); // Disable button
 
     const emailParams = {
       name: formData.name,
@@ -24,7 +28,22 @@ const ContactForm = ({ isOpen, onClose }) => {
       message: formData.message,
     };
 
-    sendEmail(emailParams);
+    sendEmail(
+      emailParams,
+      () => {
+        console.log("✅ Email sent successfully.");
+        setFormData({ name: "", email: "", subject: "", message: "" }); // Reset form
+        setIsSending(false); // Re-enable button
+        setErrorMessage(""); // Clear any previous error
+        onClose(); // Close modal after success
+      },
+      error => {
+        console.error("❌ Email failed:", error);
+        setIsSending(false); // Re-enable button
+        // setErrorMessage(error.text);
+        setErrorMessage("An error occurred. Please try again later.");
+      }
+    );
   };
 
   return (
@@ -76,7 +95,10 @@ const ContactForm = ({ isOpen, onClose }) => {
               required
             />
           </label>
-          <button type="submit">Send</button>
+          <p className="error-message">{errorMessage ?? "no error"}</p>
+          <button type="submit" disabled={isSending}>
+            {isSending ? "Sending..." : "Send"}
+          </button>
         </form>
       </Modal>
     )
