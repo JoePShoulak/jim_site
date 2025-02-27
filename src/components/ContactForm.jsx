@@ -1,10 +1,14 @@
 import { useState } from "react";
 import Modal from "./Modal";
+import { sendEmail } from "/src/scripts/sendEmail.js";
 
 const ContactForm = ({ isOpen, onClose }) => {
-  const nullState = { name: "", email: "", subject: "", message: "" };
-
-  const [formData, setFormData] = useState(nullState);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
 
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -12,10 +16,15 @@ const ContactForm = ({ isOpen, onClose }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
-    alert("Form submitted! Check console for details.");
-    setFormData(nullState);
-    onClose();
+
+    const emailParams = {
+      name: formData.name,
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+    };
+
+    sendEmail(emailParams);
   };
 
   return (
