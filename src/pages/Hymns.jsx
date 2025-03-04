@@ -3,18 +3,18 @@ import songs from "../data/songs.json";
 import Modal from "../components/Modal";
 import jim_guitar from "/images/original/jim_guitar.jpg";
 
-const Song = ({ title, onClick }) => (
-  <p className="song">
-    <a onClick={onClick}>{title}</a>
-  </p>
-);
-
 const LeftAside = () => <aside></aside>;
 
 const RightAside = () => <aside></aside>;
 
 const Hymns = () => {
   const [song, setSong] = useState(null);
+
+  const Song = ({ title, featured }) => (
+    <p className={"song" + (featured ? " featured" : "")}>
+      <a onClick={() => setSong(song)}>{title}</a>
+    </p>
+  );
 
   const SongModal = () => (
     <Modal title={song.title} onClose={() => setSong(null)}>
@@ -32,7 +32,7 @@ const Hymns = () => {
       <div className="two-column-content">
         <div className="column">
           {songs.map((song, index) => (
-            <Song key={index} {...song} onClick={() => setSong(song)} />
+            <Song key={index} {...song} />
           ))}
         </div>
         <div className="column">

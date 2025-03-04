@@ -130,6 +130,11 @@ footer {
     color: colors.$highlight;
 }
 
+.song.featured {
+  color: colors.$diaconal-red;
+  font-weight: bold;
+}
+
 .tabbed-section {
   display: flex;
   flex-direction: column;

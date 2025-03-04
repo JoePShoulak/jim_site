@@ -2,12 +2,14 @@
   {
     "title": "Welcome the Traveler",
     "description": "\"The Gospel According to Al;\" a friend of mine, lessons I learned from him",
-    "audio": "/songs/Welcome_the_Traveler.m4a"
+    "audio": "/songs/Welcome_the_Traveler.m4a",
+    "featured": true
   },
   {
     "title": "Sleep With the Angels [A Deacon's Compline]",
     "description": "[Schlaf bei den Engeln / A Grown-Up Lullaby] The title is a gift from my brother-from-another-mother, Jerry Danks. I pray that others may find peace from these lyrics",
-    "audio": "/songs/Sleep_With_the_Angels.mp3"
+    "audio": "/songs/Sleep_With_the_Angels.mp3",
+    "featured": true
   },
   {
     "title": "A Believing Thomas",
