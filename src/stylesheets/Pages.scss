@@ -1,0 +1,27 @@
+@use "./colors.scss";
+
+main {
+  display: flex;
+  width: 100%;
+  flex: 1; 
+  min-height: 0;
+  overflow: hidden;
+}
+
+aside {
+  flex: 1;
+  background-color: colors.$background-light;
+  padding: 20px;
+}
+
+section {
+  flex: 3;
+  padding: 20px;
+}
+
+// Home
+#disclaimer {
+  font-size: 14px;
+}
+
+

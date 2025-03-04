@@ -1,0 +1,35 @@
+$cranberry: #7a5a4f;
+$parchment: #f0deae;
+$suntan: #dfb386;
+$light-pine: #5f7055;
+$dark-pine: #47472d;
+$pumpkin: #bd6f28;
+$silver-pine: #4e6865;
+$matte-green: #7e8772;
+$dad-gray: #cac4bc;
+$dark-navy: #2f2e36;
+$mocha-mousse: #a57866;
+$fall-leaf: #282828;
+
+$water-blue: #568BC4;
+$oak-green: #697337;
+$sunset-orange: #D45A63;
+
+$background: $dark-navy;
+$background-light: #f4f4f4;
+$text-light: $dad-gray;
+$highlight: $suntan;
+$nav-link: $suntan;
+$button-text: $suntan;
+
+.water-blue:hover {
+  color: $water-blue;
+}
+
+.oak-green:hover {
+  color: $oak-green;
+}
+
+.sunset-orange:hover {
+  color: $sunset-orange;
+}

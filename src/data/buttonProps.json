@@ -1,0 +1,43 @@
+[
+  {
+    "label": "Home",
+    "description": "The home pages",
+    "link": "/"
+  },
+  {
+    "label": "Chapel",
+    "description": "31-Day Service-Themed Prayer Cycle, Contemplative Music, and Prayer Requests",
+    "link": "/chapel"
+  },
+  {
+    "label": "Jim's Writings",
+    "description": "Sermon Excerpts, Reflections, and Prayers",
+    "link": "/writings"
+  },
+  {
+    "label": "Jim's Hymns",
+    "description": "MP3s & Lyrics of Original Songs",
+    "link": "/hymns"
+  },
+  {
+    "label": "The Diaconate",
+    "description": "Stories and Commentary on the Life of a Deacon",
+    "link": "/diaconate"
+  },
+  {
+    "label": "Gift Shop",
+    "description": "Link To Etsy",
+    "link": "/shop"
+  },
+  {
+    "label": "Info & Contact",
+    "description": "Story behind this site, as well as Info About Jim, and his Contact Info",
+    "link": "/contact"
+  },
+  {
+    "label": "Stayin' Focused",
+    "description": "Singer-Songwriter Jim's Secular Folk Music Site",
+    "link": "/music",
+    "alt": true
+  }
+]
