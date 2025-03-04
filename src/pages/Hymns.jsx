@@ -3,11 +3,9 @@ import songs from "../data/songs.json";
 import Modal from "../components/Modal";
 import jim_guitar from "/images/original/jim_guitar.jpg";
 
-const Song = ({ title, duration, onClick }) => (
+const Song = ({ title, onClick }) => (
   <p className="song">
-    <a onClick={onClick}>
-      {title} ({duration})
-    </a>
+    <a onClick={onClick}>{title}</a>
   </p>
 );
 
