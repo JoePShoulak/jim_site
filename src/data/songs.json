@@ -1,5 +1,17 @@
 [
   {
+    "title": "Welcome the Traveler",
+    "duration": "3:06",
+    "description": "\"The Gospel According to Al;\" a friend of mine, lessons I learned from him",
+    "audio": "/songs/Welcome_the_Traveler.m4a"
+  },
+  {
+    "title": "Sleep With the Angels [A Deacon's Compline]",
+    "duration": "4:47",
+    "description": "[Schlaf bei den Engeln / A Grown-Up Lullaby] The title is a gift from my brother-from-another-mother, Jerry Danks. I pray that others may find peace from these lyrics",
+    "audio": "/songs/Sleep_With_the_Angels.mp3"
+  },
+  {
     "title": "A Believing Thomas",
     "duration": "3:09",
     "description": "A song of Faith & Hope; of Angels & Peace",
@@ -136,17 +148,5 @@
     "duration": "4:22",
     "description": "A life dedicated to educating children",
     "audio": "/songs/Sister_Mary_Boniface.mp3"
-  },
-  {
-    "title": "Sleep With the Angels [A Deacon's Compline]",
-    "duration": "4:47",
-    "description": "[Schlaf bei den Engeln / A Grown-Up Lullaby] The title is a gift from my brother-from-another-mother, Jerry Danks. I pray that others may find peace from these lyrics",
-    "audio": "/songs/Sleep_With_the_Angels.mp3"
-  },
-  {
-    "title": "Welcome the Traveler",
-    "duration": "3:06",
-    "description": "\"The Gospel According to Al;\" a friend of mine, lessons I learned from him",
-    "audio": "/songs/Welcome_the_Traveler.m4a"
   }
 ]
