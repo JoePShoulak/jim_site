@@ -6,6 +6,7 @@ import elephant_oak from "/images/original/elephant_oak.jpg";
 const superior_sunset = "/images/original/superior_sunset.JPG";
 
 import TabbedSections from "../components/TabbedSection";
+import Aside from "../components/Aside";
 
 import writings from "../data/writings.json";
 
@@ -83,7 +84,7 @@ const tabs = [
   },
 ];
 
-const LeftAside = () => <aside></aside>;
+const LeftAside = () => <Aside logo={true}></Aside>;
 
 const CenterSection = () => (
   <section>
@@ -92,7 +93,7 @@ const CenterSection = () => (
   </section>
 );
 
-const RightAside = () => <aside></aside>;
+const RightAside = () => <Aside></Aside>;
 
 const Writings = () => (
   <>

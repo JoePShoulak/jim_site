@@ -6,10 +6,11 @@ import logo from "/images/original/logo.png";
 import { Calendar } from "../components/Calendar";
 import Image from "../components/Image";
 import ContactForm from "../components/ContactForm";
+import Aside from "../components/Aside";
 
 const LeftAside = () => (
-  <aside>
-    <Image src={logo} />
+  <Aside logo={true}>
+    <Image src={logo} style={{ width: "60%", justifySelf: "center" }} />
     <Calendar />
     <p>
       Each of the 31-Day Prayer Walk features an inspiring photograph, an
@@ -19,7 +20,7 @@ const LeftAside = () => (
       your chapel! May the Spirit be with you as you take time for a short
       spiritual journey.
     </p>
-  </aside>
+  </Aside>
 );
 
 const Chapel = () => {
@@ -32,20 +33,16 @@ const Chapel = () => {
         <h2>Chapel</h2>
         <img src={chapelImage} alt="benches in light woods near a pond" />
       </section>
-      <aside>
+      <Aside>
         <h3 id="prayer-request">Prayer Requests</h3>
         <img
           src={candleGif}
           alt="Flickering candle"
           width="300px"
-          style={{ cursor: "pointer" }}
-          onClick={() => setIsContactOpen(true)}
+          style={{ paddingBottom: "30px" }}
         />
-        <p>
-          Click on the candle if you'd like to leave a prayer request for us and
-          our prayer support friends.
-        </p>
-      </aside>
+        <button onClick={() => setIsContactOpen(true)}>Contact Us</button>
+      </Aside>
 
       <ContactForm
         isOpen={isContactOpen}

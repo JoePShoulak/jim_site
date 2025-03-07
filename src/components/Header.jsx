@@ -27,7 +27,6 @@ const NavBar = () => (
 const Header = () => (
   <>
     <header>
-      <img src={basin} alt="logo" className="logo" />
       <h1>Pitcher, Basin & Towel</h1>
     </header>
     <NavBar />

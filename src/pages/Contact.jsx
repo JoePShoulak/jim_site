@@ -4,7 +4,14 @@ import ContactForm from "../components/ContactForm";
 import jim_headshot from "/images/original/jim_headshot.jpeg";
 import scribe from "/images/original/scribe.jpg";
 
-const LeftAside = () => <aside></aside>;
+import Aside from "../components/Aside";
+import Image from "../components/Image";
+
+const LeftAside = () => (
+  <Aside logo={true}>
+    <Image src={jim_headshot} />
+  </Aside>
+);
 
 const CenterSection = () => {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -35,22 +42,19 @@ const CenterSection = () => {
           </p>
         </div>
         <div className="column">
-          <img src={jim_headshot} id="headshot"></img>
+          <img src={scribe}></img>
+          <button onClick={() => setIsContactOpen(true)}>Contact Us</button>
         </div>
       </div>
       <ContactForm
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
       />
-      <button onClick={() => setIsContactOpen(true)}>Contact Us</button>
-      <img
-        src={scribe}
-        style={{ justifySelf: "center", marginTop: "20px" }}></img>
     </section>
   );
 };
 
-const RightAside = () => <aside></aside>;
+const RightAside = () => <Aside></Aside>;
 
 const Contact = () => (
   <>

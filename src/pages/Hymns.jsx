@@ -3,15 +3,17 @@ import songs from "../data/songs.json";
 import Modal from "../components/Modal";
 import jim_guitar from "/images/original/jim_guitar.jpg";
 
+import Aside from "../components/Aside";
+
 const Song = ({ title, onClick, featured }) => (
   <p className={"song" + `${featured ? " featured" : ""}`}>
     <a onClick={onClick}>{title}</a>
   </p>
 );
 
-const LeftAside = () => <aside></aside>;
+const LeftAside = () => <Aside logo={true}></Aside>;
 
-const RightAside = () => <aside></aside>;
+const RightAside = () => <Aside></Aside>;
 
 const Hymns = () => {
   const [song, setSong] = useState(null);

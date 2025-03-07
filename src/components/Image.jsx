@@ -3,7 +3,7 @@ const Image = props => {
   const { [props.credit]: _, ...imageProps } = props;
   return (
     <>
-      <img {...imageProps}></img>
+      <img {...imageProps} style={{ paddingTop: "30px" }}></img>
       {props.credit && <p className="credit">Credit: {props.credit}</p>}
     </>
   );

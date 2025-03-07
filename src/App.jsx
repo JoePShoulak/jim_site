@@ -6,7 +6,6 @@ import {
   Writings,
   Hymns,
   Diaconate,
-  Shop,
   Contact,
   NotFound,
 } from "./pages";
@@ -54,7 +53,6 @@ const App = () => (
           <Route path="/writings" element={<Writings />} />
           <Route path="/hymns" element={<Hymns />} />
           <Route path="/diaconate" element={<Diaconate />} />
-          <Route path="/shop" element={<Shop />} />
           <Route path="/contact" element={<Contact />} />
 
           <Route path="*" element={<UnknownPage />} />

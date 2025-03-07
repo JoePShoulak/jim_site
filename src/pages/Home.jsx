@@ -26,7 +26,7 @@ const CenterSection = () => (
 );
 
 const RightAside = () => (
-  <aside id="disclaimer">
+  <Aside id="disclaimer">
     <img src={stole} />
     <p class="credit">
       Scripture quotations are from New Revised Standard Version Bible,
@@ -50,7 +50,7 @@ const RightAside = () => (
       </a>{" "}
       | Used by Permission
     </p>
-  </aside>
+  </Aside>
 );
 
 const Home = () => (
