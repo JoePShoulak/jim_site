@@ -20,4 +20,42 @@ const TabbedSections = ({ tabs }) => {
   );
 };
 
-export default TabbedSections;
+const TabContent = ({ content, img, imgAlt, className }) => {
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const ModalLink = ({ item }) => {
+    const [hovered, setHovered] = useState(className);
+
+    return (
+      <p>
+        <a
+          onClick={() => setSelectedItem(item)}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          className={className}>
+          {item.title}
+        </a>
+      </p>
+    );
+  };
+
+  return (
+    <div className="two-column-content">
+      <div className="column">
+        {content.map((item, i) => (
+          <ModalLink key={i} item={item} />
+        ))}
+      </div>
+      <div className="column">
+        <img src={img} alt={imgAlt} />
+      </div>
+      {selectedItem && (
+        <Modal title={selectedItem.title} onClose={() => setSelectedItem(null)}>
+          <p>{selectedItem.content}</p>
+        </Modal>
+      )}
+    </div>
+  );
+};
+
+export { TabbedSections, TabContent };
