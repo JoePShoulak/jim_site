@@ -1,8 +1,8 @@
 import { useState } from "react";
 import ContactForm from "../components/ContactForm";
 
-import jim_headshot from "/images/original/jim_headshot.jpeg";
-import scribe from "/images/original/scribe.jpg";
+import jim_headshot from "/images/original/headshot2.png";
+import scribe from "/images/original/scribe.png";
 
 import Aside from "../components/Aside";
 import Image from "../components/Image";
