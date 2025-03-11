@@ -41,7 +41,6 @@ const RightAside = () => (
       All other content (text, illustrations, photographs and music) - unless
       attributed to others - is the work of the author.
     </p>
-    <br />
     <p class="credit">
       Clipart used in main site logo Credit: ID 234547372 and ID 234136361 ©
       Alona Zhitnaya in UKRAINE. |{" "}
@@ -49,6 +48,13 @@ const RightAside = () => (
         dreamstime.com
       </a>{" "}
       | Used by Permission
+    </p>
+    <p class="credit">
+      ALL CONTENT, aside from BCP excerpts, Scripture from the NRSV Bible, and
+      select clipart is the property of Jim Shoulak. No permission is needed for
+      the reprinting of content for personal, private use, or for a one-time
+      usage in a small group gathering. For any larger reuse or reprinting,
+      please request permission from the author.
     </p>
   </Aside>
 );
