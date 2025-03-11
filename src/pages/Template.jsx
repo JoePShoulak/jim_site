@@ -1,8 +1,8 @@
-const LeftAside = () => <aside></aside>;
+const LeftAside = () => <Aside logo={true}></Aside>;
 
 const CenterSection = () => <section></section>;
 
-const RightAside = () => <aside></aside>;
+const RightAside = () => <Aside></Aside>;
 
 const Template = () => (
   <>

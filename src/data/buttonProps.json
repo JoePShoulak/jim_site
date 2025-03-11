@@ -25,6 +25,11 @@
     "link": "/diaconate"
   },
   {
+    "label": "Disclaimers",
+    "description": "Legal stuff",
+    "link": "/disclaimers"
+  },
+  {
     "label": "Info & Contact",
     "description": "Story behind this site, as well as Info About Jim, and his Contact Info",
     "link": "/contact"
