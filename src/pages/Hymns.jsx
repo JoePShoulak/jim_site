@@ -11,7 +11,7 @@ const Song = ({ title, onClick, featured }) => (
   </p>
 );
 
-const LeftAside = () => <Aside logo={true}></Aside>;
+const LeftAside = () => <Aside></Aside>;
 
 const RightAside = () => <Aside></Aside>;
 

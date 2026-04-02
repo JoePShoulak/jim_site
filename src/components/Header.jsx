@@ -26,8 +26,14 @@ const NavBar = () => (
 
 const Header = () => (
   <>
-    <header>
+    <header
+      style={{ display: "flex", flexDirection: "column", height: "200px" }}>
       <h1>Pitcher, Basin & Towel</h1>
+      <h3>
+        For Deacons and other Servant Leaders who serve the least, the last and
+        the lost.
+      </h3>
+      <img src={basin} alt="logo" className="logo" />
     </header>
     <NavBar />
   </>

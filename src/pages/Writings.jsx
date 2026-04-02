@@ -47,8 +47,6 @@ const tabs = [
   },
 ];
 
-const LeftAside = () => <Aside logo={true}></Aside>;
-
 const CenterSection = () => (
   <section>
     <h2>Writings</h2>
@@ -60,7 +58,7 @@ const RightAside = () => <Aside></Aside>;
 
 const Writings = () => (
   <>
-    <LeftAside />
+    <Aside />
     <CenterSection />
     <RightAside />
   </>

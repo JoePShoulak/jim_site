@@ -9,16 +9,26 @@ import ContactForm from "../components/ContactForm";
 import Aside from "../components/Aside";
 
 const LeftAside = () => (
-  <Aside logo={true}>
+  <Aside>
     <Image src={logo} style={{ width: "60%", justifySelf: "center" }} />
-    <Calendar />
     <p>
-      Each of the 31-Day Prayer Walk features an inspiring photograph, an
-      invitation to prayer, a Psalm excerpt and another Bible quotation, a
-      section from the Ordination Rite for Deacons (in the BCP), and a final
-      prayer or reflection. Start anywhere you’d like — there are no rules in
-      your chapel! May the Spirit be with you as you take time for a short
-      spiritual journey.
+      Each day of this 31-Day Prayer Walk features an inspiring photograph,
+      verses from Scripture, and a short commentary.
+      <br />
+      <br />
+      The core of this experience are excerpts from the{" "}
+      <b>Ordination Rite for Deacons</b> from the Episcopal Book of Common
+      Prayer (BCP), that are reprinted in order through all 31 days.{" "}
+      <i>
+        [Unless otherwise noted, all quotes from the Ordination Rite are spoken
+        by the Bishop.]
+      </i>
+      <br />
+      <br />
+      Servant Leaders from any walk of life may find this exercise beneficial.
+      <br />
+      <br />
+      May the Spirit be with you as you take time for a short spiritual journey.
     </p>
   </Aside>
 );
@@ -32,6 +42,7 @@ const Chapel = () => {
       <section>
         <h2>Chapel</h2>
         <img src={chapelImage} alt="benches in light woods near a pond" />
+        <Calendar />
       </section>
       <Aside>
         <h3 id="prayer-request">Prayer Requests</h3>
