@@ -45,13 +45,13 @@ const Chapel = () => {
         <Calendar />
       </section>
       <Aside>
-        <h3 id="prayer-request">Prayer Requests</h3>
         <img
           src={candleGif}
           alt="Flickering candle"
           width="300px"
           style={{ paddingBottom: "30px" }}
         />
+        <h3 id="prayer-request">Prayer Requests</h3>
         <button onClick={() => setIsContactOpen(true)}>Contact Us</button>
       </Aside>
 

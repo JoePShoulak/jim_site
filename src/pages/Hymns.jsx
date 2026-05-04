@@ -30,20 +30,42 @@ const Hymns = () => {
 
   const CenterSection = () => (
     <section>
-      <h2>Hymns</h2>
       <div className="two-column-content">
         <div className="column">
-          {songs.map((song, index) => (
-            <Song key={index} {...song} onClick={() => setSong(song)} />
-          ))}
+          {songs
+            .filter((_, index) => index % 2 == 0)
+            .map((song, index) => (
+              <Song key={index} {...song} onClick={() => setSong(song)} />
+            ))}
         </div>
         <div className="column">
-          <img src={jim_guitar} alt="Jim playing guitar" />
-          <p class="credit">Credit: Maya Bolduan</p>
+          {songs
+            .filter((_, index) => index % 2 == 1)
+            .map((song, index) => (
+              <Song key={index} {...song} onClick={() => setSong(song)} />
+            ))}
         </div>
       </div>
+      <img src={jim_guitar} alt="Jim playing guitar" />
+      <p class="credit">Credit: Maya Bolduan</p>
     </section>
   );
+  // const CenterSection = () => (
+  //   <section>
+  //     <h2>Hymns</h2>
+  //     <div className="two-column-content">
+  //       <div className="column">
+  //         {songs.map((song, index) => (
+  //           <Song key={index} {...song} onClick={() => setSong(song)} />
+  //         ))}
+  //       </div>
+  //       <div className="column">
+  //         <img src={jim_guitar} alt="Jim playing guitar" />
+  //         <p class="credit">Credit: Maya Bolduan</p>
+  //       </div>
+  //     </div>
+  //   </section>
+  // );
 
   return (
     <>

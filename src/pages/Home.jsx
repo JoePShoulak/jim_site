@@ -13,7 +13,7 @@ const LeftAside = () => (
       denomination — or no church affiliation — to settle here for a while and
       enter into the spiritual presence of a Higher Power.
     </p>
-    <h3>Jim Shoulak</h3>
+    <img src={signatureImage} alt="signature" />
     <img src={headshot2} style={{ paddingTop: "30px" }} />
     <p>
       Jim Shoulak is a retired deacon in the Episcopal Diocese of Minnesota. He
@@ -24,10 +24,13 @@ const LeftAside = () => (
 );
 
 const CenterSection = () => (
-  <section>
-    <h2>Home</h2>
+  <section
+    style={{
+      display: "flex",
+      flexDirection: "column",
+    }}>
     <img src={footwashingImage} alt="footwashing art" />
-    <p>
+    <p style={{ marginTop: "auto", fontSize: 10 }}>
       Scripture quotations are from New Revised Standard Version Bible,
       copyright © 1989 National Council of the Churches of Christ in the United
       States of America. Used by permission. All rights reserved worldwide. Book
