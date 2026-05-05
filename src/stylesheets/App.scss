@@ -4,6 +4,13 @@
 @use './colors.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+@font-face {
+  font-family: 'Playball';
+  src: url('/public/fonts/Playball-Regular.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   font-family: roboto, sans-serif;
 }
@@ -26,11 +33,14 @@ html, body {
 
 h1 {
   font-size: 60px;
+  font-family: "Playball";
 }
 
 h3 {
   text-align: left;
   align-self: left;
+  font-family: "Playball";
+  color: #1F4E79;
 }
 
 a {

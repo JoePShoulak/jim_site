@@ -14,7 +14,7 @@ const LeftAside = () => (
       enter into the spiritual presence of a Higher Power.
     </p>
     <img src={signatureImage} alt="signature" />
-    <img src={headshot2} style={{ paddingTop: "30px" }} />
+    <img src={jim_headshot} style={{ paddingTop: "30px" }} />
     <p>
       Jim Shoulak is a retired deacon in the Episcopal Diocese of Minnesota. He
       currently serves as chaplain of the Corcoran, Minnesota, police
@@ -30,7 +30,7 @@ const CenterSection = () => (
       flexDirection: "column",
     }}>
     <img src={footwashingImage} alt="footwashing art" />
-    <p style={{ marginTop: "auto", fontSize: 10 }}>
+    <p style={{ marginBottom: "20px", marginTop: "auto", fontSize: 10 }}>
       Scripture quotations are from New Revised Standard Version Bible,
       copyright © 1989 National Council of the Churches of Christ in the United
       States of America. Used by permission. All rights reserved worldwide. Book

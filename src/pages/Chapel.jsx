@@ -40,7 +40,6 @@ const Chapel = () => {
     <>
       <LeftAside />
       <section>
-        <h2>Chapel</h2>
         <img src={chapelImage} alt="benches in light woods near a pond" />
         <Calendar />
       </section>
@@ -51,7 +50,9 @@ const Chapel = () => {
           width="300px"
           style={{ paddingBottom: "30px" }}
         />
-        <h3 id="prayer-request">Prayer Requests</h3>
+        <h3 id="prayer-request" style={{ textAlign: "center" }}>
+          Prayer Requests
+        </h3>
         <button onClick={() => setIsContactOpen(true)}>Contact Us</button>
       </Aside>
 
