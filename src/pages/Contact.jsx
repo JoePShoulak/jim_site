@@ -1,11 +1,10 @@
 import { useState } from "react";
 import ContactForm from "../components/ContactForm";
 
-import jim_headshot from "/images/original/headshot2.png";
 import scribe from "/images/original/scribe.png";
+import joe from "/images/original/Joe.jpg";
 
 import Aside from "../components/Aside";
-import Image from "../components/Image";
 
 const LeftAside = () => (
   <Aside>
@@ -52,7 +51,20 @@ const CenterSection = () => {
   );
 };
 
-const RightAside = () => <Aside></Aside>;
+const RightAside = () => (
+  <Aside>
+    <div className="contact-thank-you">
+      <img src={joe} alt="Joe P Shoulak" />
+      <p>
+        <em>
+          “A special thank you to my son, Joe P Shoulak, for his countless
+          hours of expertise, suggestions and support for this project.”
+        </em>
+      </p>
+      <p>—Joe’s Dad</p>
+    </div>
+  </Aside>
+);
 
 const Contact = () => (
   <>
