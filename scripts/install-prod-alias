@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+ALIAS_LINE="alias jprod='bash /c/Users/joeps/coding/jim_site/scripts/prod'"
+BASHRC="${HOME}/.bashrc"
+
+touch "$BASHRC"
+
+if grep -Fqx "$ALIAS_LINE" "$BASHRC"; then
+  echo "jprod alias is already installed."
+else
+  {
+    echo
+    echo "# Jim site production helper"
+    echo "$ALIAS_LINE"
+  } >>"$BASHRC"
+  echo "Installed jprod alias in $BASHRC"
+fi
+
+echo "Run this once in the current shell to use it immediately:"
+echo "  source ~/.bashrc"

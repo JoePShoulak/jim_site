@@ -1,0 +1,11 @@
+server {
+  listen 5101;
+  server_name _;
+
+  root /opt/jim-site/app/dist;
+  index index.html;
+
+  location / {
+    try_files $uri $uri/ /index.html;
+  }
+}

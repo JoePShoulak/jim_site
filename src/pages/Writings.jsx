@@ -17,8 +17,8 @@ const writingEntries = {
   Friends: "/images/writings/friends.png",
   "What's a Deacon?": "/images/writings/whats-a-deacon.png",
   "Hold on to Each Other!": "/images/writings/hold-on-to-each-other.png",
-  // TODO: Add the missing source image for this page entry.
-  "For Discernment in a Group": null,
+  "For Discernment in a Group":
+    "/images/writings/for-discernment-in-a-group.png",
   "Called to Be Sent": "/images/writings/called-to-be-sent.png",
   "Sleep With the Angels": "/images/writings/sleep-with-the-angels.png",
 };
@@ -119,29 +119,57 @@ const postcardEntries = [
   },
 ];
 
-const landscapePostcards = postcardEntries.filter(
-  postcard =>
-    postcard.image &&
-    ![
-      "/images/postcards/JPC04 Heart and Mind.png",
-      "/images/postcards/JPC09 In Our Darkest Moments.png",
-      "/images/postcards/JPC13 Breast Cancer Music.png",
-      "/images/postcards/JPC15 Breast Cancer You Are Prepared.png",
-      "/images/postcards/JPC18 Grief Comfort.png",
-    ].includes(postcard.image)
+const portraitPostcardImages = [
+  "/images/postcards/JPC04 Heart and Mind.png",
+  "/images/postcards/JPC09 In Our Darkest Moments.png",
+  "/images/postcards/JPC13 Breast Cancer Music.png",
+  "/images/postcards/JPC15 Breast Cancer You Are Prepared.png",
+  "/images/postcards/JPC18 Grief Comfort.png",
+];
+
+const postcardByTitle = Object.fromEntries(
+  postcardEntries.map(postcard => [postcard.title, postcard]),
 );
 
-const portraitPostcards = postcardEntries.filter(
-  postcard =>
-    !postcard.image ||
-    [
-      "/images/postcards/JPC04 Heart and Mind.png",
-      "/images/postcards/JPC09 In Our Darkest Moments.png",
-      "/images/postcards/JPC13 Breast Cancer Music.png",
-      "/images/postcards/JPC15 Breast Cancer You Are Prepared.png",
-      "/images/postcards/JPC18 Grief Comfort.png",
-    ].includes(postcard.image)
-);
+const leftPostcards = [
+  "Throwing Stones",
+  "Who Are You, Lord?",
+  "Humble Service",
+  "Good Samaritans",
+  "People Are Good",
+  "On Listening",
+  "Healing the World",
+  "If You Don't Succeed...",
+  "Ladybug on My Phone",
+  "Service of Heart & Mind",
+  "In Our Darkest Moments",
+  "Breast Cancer Music",
+].map(title => postcardByTitle[title]);
+
+const rightPostcards = [
+  "Serve Others",
+  "Finish Each Day",
+  "A Note for Grief",
+  "Whom Should I Serve?",
+  "Gethsemane",
+  "Error 404",
+  "Morning Offering",
+  "St. Augustine Quotes",
+  "Breast Cancer: You Are Prepared",
+  "Grief Comfort",
+].map(title => postcardByTitle[title]);
+
+const getLandscapePostcards = postcards =>
+  postcards.filter(
+    postcard =>
+      postcard?.image && !portraitPostcardImages.includes(postcard.image),
+  );
+
+const getPortraitPostcards = postcards =>
+  postcards.filter(
+    postcard =>
+      postcard?.image && portraitPostcardImages.includes(postcard.image),
+  );
 
 const PageEntry = ({ title, subtitle, subtitles = [], onClick }) => {
   const allSubtitles = subtitle ? [subtitle, ...subtitles] : subtitles;
@@ -159,18 +187,11 @@ const PageEntry = ({ title, subtitle, subtitles = [], onClick }) => {
   );
 };
 
-const ImageModal = ({
-  image,
-  alt,
-  downloadName,
-  onClose,
-  className = "",
-}) => (
+const ImageModal = ({ image, alt, downloadName, onClose, className = "" }) => (
   <Modal
     onClose={onClose}
     className={`image-modal ${className}`.trim()}
-    showCloseButton={false}
-  >
+    showCloseButton={false}>
     <div className="image-modal-scroll">
       <img className="modal-image" src={image} alt={alt} />
     </div>
@@ -183,8 +204,10 @@ const ImageModal = ({
   </Modal>
 );
 
-const PostcardSidebar = () => {
+const PostcardSidebar = ({ postcards = postcardEntries }) => {
   const [activePostcard, setActivePostcard] = useState(null);
+  const landscapePostcards = getLandscapePostcards(postcards);
+  const portraitPostcards = getPortraitPostcards(postcards);
 
   return (
     <Aside>
@@ -201,8 +224,7 @@ const PostcardSidebar = () => {
             <button
               className="postcard-tile"
               key={postcard.title}
-              onClick={() => setActivePostcard(postcard)}
-            >
+              onClick={() => setActivePostcard(postcard)}>
               <span>{postcard.title}</span>
             </button>
           ))}
@@ -213,8 +235,7 @@ const PostcardSidebar = () => {
             <button
               className="postcard-tile postcard-tile-vertical"
               key={postcard.title}
-              onClick={() => setActivePostcard(postcard)}
-            >
+              onClick={() => setActivePostcard(postcard)}>
               <span>{postcard.title}</span>
             </button>
           ))}
@@ -235,8 +256,7 @@ const PostcardSidebar = () => {
         <Modal
           onClose={() => setActivePostcard(null)}
           className="missing-image-modal"
-          showCloseButton={false}
-        >
+          showCloseButton={false}>
           <p>This postcard image is not available yet.</p>
           <div className="image-modal-actions">
             <button onClick={() => setActivePostcard(null)}>Close</button>
@@ -263,8 +283,6 @@ const CenterSection = () => {
 
   return (
     <section className="center-section">
-      <h2>Writings</h2>
-
       <div className="book-wrapper">
         <img
           className="writing-image"
@@ -340,6 +358,7 @@ const CenterSection = () => {
         <ImageModal
           image={activeEntry.image}
           alt={activeEntry.title}
+          downloadName={`${activeEntry.title}.png`}
           className="writing-entry-modal"
           onClose={closeEntry}
         />
@@ -349,8 +368,7 @@ const CenterSection = () => {
         <Modal
           onClose={closeEntry}
           className="image-modal missing-image-modal"
-          showCloseButton={false}
-        >
+          showCloseButton={false}>
           <p>This writing image is not available yet.</p>
           <div className="image-modal-actions">
             <button onClick={closeEntry}>Close</button>
@@ -363,9 +381,9 @@ const CenterSection = () => {
 
 const Writings = () => (
   <>
-    <Aside />
+    <PostcardSidebar postcards={leftPostcards} />
     <CenterSection />
-    <PostcardSidebar />
+    <PostcardSidebar postcards={rightPostcards} />
   </>
 );
 

@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 import { env } from "process";
 
 const app = express();
-const PORT = env.PORT || 5000; // Use 'env' instead of 'process.env'
+const PORT = env.PORT || 5101;
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
