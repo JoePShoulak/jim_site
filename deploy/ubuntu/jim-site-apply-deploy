@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+ARCHIVE="${1:-/tmp/jim-site.tar.gz}"
+
+if [[ "$ARCHIVE" != "/tmp/jim-site.tar.gz" ]]; then
+  echo "Refusing unexpected archive path: $ARCHIVE" >&2
+  exit 1
+fi
+
+if [[ ! -f "$ARCHIVE" ]]; then
+  echo "Archive not found: $ARCHIVE" >&2
+  exit 1
+fi
+
+WORK_DIR="/tmp/jim-site-apply"
+rm -rf "$WORK_DIR"
+mkdir -p "$WORK_DIR"
+tar -xzf "$ARCHIVE" -C "$WORK_DIR"
+cd "$WORK_DIR"
+
+bash deploy/apply-deploy.sh "$ARCHIVE"

@@ -2,11 +2,15 @@
 set -Eeuo pipefail
 
 COMMAND="${1:-status}"
-HOST_NAME="${JIM_PROD_SSH:-ksp@192.168.20.105}"
+HOST_NAME="${JIM_PROD_SSH:-hp4}"
 PROD_URL="${JIM_PROD_URL:-http://192.168.20.105:5101}"
-BRANCH="${JIM_PROD_BRANCH:-main}"
+REMOTE_ARCHIVE="${JIM_REMOTE_ARCHIVE:-/tmp/jim-site.tar.gz}"
+REMOTE_WORK_DIR="${JIM_REMOTE_WORK_DIR:-~/jim-site-deploy}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+LOCAL_ARCHIVE="$REPO_DIR/deploy/dist/jim-site.tar.gz"
 
-SUDO_HELP="Prod sudo permissions may need to be refreshed. Run: bash scripts/prod deploy, then bash scripts/prod repair-sudo"
+SUDO_HELP="Prod sudo permissions may need to be refreshed. Run: bash scripts/prod setup"
 
 prod_ssh() {
   ssh "$HOST_NAME" "$@"
@@ -23,22 +27,23 @@ run_remote() {
 }
 
 redeploy_remote() {
-  run_remote "git --work-tree=/opt/jim-site/app --git-dir=/srv/git/jim-site.git checkout -f $BRANCH && cd /opt/jim-site/app && bash deploy/ubuntu/deploy.sh"
+  run_remote "sudo -n /usr/local/sbin/jim-site-apply-deploy $REMOTE_ARCHIVE"
 }
 
-require_clean_deploy_tree() {
-  local dirty
+package_and_copy() {
+  cd "$REPO_DIR"
+  bash deploy/package-for-ubuntu.sh
+  scp "$LOCAL_ARCHIVE" "$HOST_NAME:$REMOTE_ARCHIVE"
+}
 
-  dirty="$(git status --porcelain)"
+deploy_package() {
+  package_and_copy
+  redeploy_remote
+}
 
-  if [[ -n "$dirty" ]]; then
-    echo "There are local changes that are not committed, so deploy would not include them."
-    echo
-    echo "$dirty"
-    echo
-    echo "Commit the changes first, then run: bash scripts/prod deploy"
-    return 1
-  fi
+setup_remote() {
+  package_and_copy
+  ssh -t "$HOST_NAME" "rm -rf $REMOTE_WORK_DIR && mkdir -p $REMOTE_WORK_DIR && tar -xzf $REMOTE_ARCHIVE -C $REMOTE_WORK_DIR && cd $REMOTE_WORK_DIR && sudo bash deploy/ubuntu/bootstrap.sh && sudo bash deploy/apply-deploy.sh $REMOTE_ARCHIVE"
 }
 
 show_status() {
@@ -73,16 +78,17 @@ case "$COMMAND" in
   redeploy)
     redeploy_remote
     ;;
+  setup|bootstrap)
+    setup_remote
+    ;;
   deploy|update)
-    require_clean_deploy_tree
-    git push prod "HEAD:$BRANCH"
-    redeploy_remote
+    deploy_package
     ;;
   ssh)
     ssh "$HOST_NAME"
     ;;
   *)
-    echo "Usage: scripts/prod [status|health|reload|repair-sudo|redeploy|deploy|update|ssh]"
+    echo "Usage: scripts/prod [status|health|reload|repair-sudo|redeploy|setup|bootstrap|deploy|update|ssh]"
     exit 2
     ;;
 esac

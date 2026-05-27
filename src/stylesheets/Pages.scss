@@ -24,4 +24,27 @@ section {
   font-size: 14px;
 }
 
+@media (max-width: 900px) {
+  main {
+    flex-direction: column;
+    min-height: auto;
+    overflow: visible;
+  }
+
+  aside,
+  section {
+    box-sizing: border-box;
+    flex: none;
+    width: 100%;
+  }
+
+  aside {
+    padding: 16px;
+  }
+
+  section {
+    padding: 16px;
+  }
+}
+
 

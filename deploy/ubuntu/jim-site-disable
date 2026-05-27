@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+rm -f /etc/nginx/sites-enabled/jim-site
+nginx -t
+systemctl reload nginx

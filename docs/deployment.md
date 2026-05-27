@@ -1,8 +1,9 @@
 # LAN Production Deployment
 
-This app is designed to run on the same Ubuntu server as `ksp_python`, using the
-same push-to-deploy shape, but without a backend service. Nginx serves the built
-Vite app directly on port `5101`.
+`jim_site` runs as a static Vite build served by Nginx on the Ubuntu HP4 server.
+Deployments use the same tar archive pattern as the other Shoulak apps: build a
+package locally, copy it to the server, then ask the server to unpack, build, and
+reload Nginx.
 
 ## Production Shape
 
@@ -13,92 +14,98 @@ Browser
   -> /opt/jim-site/app/dist
 ```
 
-## First Server Setup
-
-Copy or clone this repository onto the Ubuntu server, then run:
-
-```bash
-cd /path/to/jim_site
-sudo bash deploy/ubuntu/bootstrap.sh
-```
-
-The bootstrap creates:
+Key paths and identities:
 
 - app directory: `/opt/jim-site/app`
-- bare deployment repo: `/srv/git/jim-site.git`
-- deploy user: `ksp`
-- Nginx site on port `5101`
+- deploy archive: `/tmp/jim-site.tar.gz`
+- deploy user that owns the app files: `ksp`
+- passwordless deploy operator: `leo` by default
+- Nginx site file: `/etc/nginx/sites-available/jim-site`
+- production port: `5101`
 
-## SSH Deploy User
+## Short Commands
 
-The push-to-deploy remote expects SSH access as the `ksp` user. If the key is
-already installed for `ksp_python`, no additional user setup should be needed.
-Otherwise, add your public key on the server:
-
-```bash
-sudo install -d -m 700 -o ksp -g ksp /home/ksp/.ssh
-echo "YOUR_PUBLIC_KEY_HERE" | sudo tee -a /home/ksp/.ssh/authorized_keys
-sudo chown ksp:ksp /home/ksp/.ssh/authorized_keys
-sudo chmod 600 /home/ksp/.ssh/authorized_keys
-```
-
-## Push-To-Deploy
-
-From your development machine:
+From Git Bash on the dev machine:
 
 ```bash
-git remote add prod ssh://ksp@192.168.20.105/srv/git/jim-site.git
-git push prod main
+cd C:/Users/joeps/coding/jim_site
+source deploy/aliases.sh
 ```
 
-The server-side hook checks out `main`, installs Node dependencies, builds the
-app, refreshes the Nginx site config, and reloads Nginx.
-
-## Daily Prod Commands
-
-From Git Bash in the project root on your development machine:
+Then use the same verbs as the other apps:
 
 ```bash
-bash scripts/prod status      # check the frontend URL
-bash scripts/prod reload      # test and reload Nginx
-bash scripts/prod repair-sudo # refresh prod sudo permissions
-bash scripts/prod redeploy    # re-run deployment even if Git says up-to-date
-bash scripts/prod deploy      # push current commit to production main
-bash scripts/prod ssh         # open SSH session
+deploy
+up
+down
+restart
 ```
 
-Optional local alias:
+`down` disables only the Jim Nginx site and reloads Nginx. It does not stop the
+shared HP4 Nginx process.
+
+## First Server Setup
+
+Run this once from Git Bash on your development machine. This packages the app,
+copies it to HP4, runs bootstrap, applies the package, builds the frontend, and
+reloads Nginx.
 
 ```bash
-bash scripts/install-prod-alias
-source ~/.bashrc
+bootstrap
 ```
 
-That installs:
+The setup step may ask for the server password because it installs system config.
+After that, normal deploys should use `deploy`.
+
+If the SSH user on HP4 is not `leo`, set `DEPLOY_OPERATOR` during bootstrap on
+the server:
 
 ```bash
-alias jprod='bash /c/Users/joeps/coding/jim_site/scripts/prod'
-jprod status
-jprod deploy
+sudo DEPLOY_OPERATOR=your_user bash deploy/ubuntu/bootstrap.sh
 ```
 
-## Manual Deploy
+## Normal Deploy
 
-If you already have the latest code on the server:
+After the first setup, use:
 
 ```bash
-cd /opt/jim-site/app
-bash deploy/ubuntu/deploy.sh
+deploy
 ```
 
-Frontend from another LAN machine:
+That command:
+
+- creates `deploy/dist/jim-site.tar.gz`
+- copies the archive to `/tmp/jim-site.tar.gz` on HP4
+- runs the locked-down deploy wrapper
+- replaces `/opt/jim-site/app`
+- installs dependencies
+- builds the Vite app
+- verifies and reloads Nginx
+
+## Scripts
+
+- `deploy/package-for-ubuntu.sh`: creates the tar archive.
+- `deploy/source-deploy.sh`: packages and copies the archive to HP4.
+- `deploy/manage.sh`: uniform `deploy`, `up`, `down`, `restart` wrapper.
+- `deploy/apply-deploy.sh`: applies an archive on the target machine.
+- `deploy/ubuntu/bootstrap.sh`: first-time HP4 setup.
+- `deploy/ubuntu/jim-site-apply-deploy`: no-password server-side deploy wrapper.
+- `deploy/ubuntu/jim-site-disable`: disables only the Jim Nginx site.
+- `deploy/ubuntu/install-system-config.sh`: refreshes Nginx and sudo permissions.
+- `scripts/prod`: older local helper for status, setup, deploy, reload, and SSH.
+
+## Checks
+
+Open the production site from another LAN machine:
 
 ```text
 http://192.168.20.105:5101
 ```
 
-Logs:
+Useful server checks:
 
 ```bash
+sudo nginx -t
+sudo systemctl status nginx --no-pager
 sudo tail -f /var/log/nginx/error.log
 ```

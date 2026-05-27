@@ -77,3 +77,24 @@ button {
     color: colors.$highlight;
   }
 }
+
+@media (max-width: 700px) {
+  h1 {
+    font-size: 42px;
+    line-height: 1.05;
+    text-align: center;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  button {
+    max-width: 100%;
+    font-size: 18px;
+  }
+}
