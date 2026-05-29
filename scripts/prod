@@ -2,18 +2,38 @@
 set -Eeuo pipefail
 
 COMMAND="${1:-status}"
-HOST_NAME="${JIM_PROD_SSH:-hp4}"
-PROD_URL="${JIM_PROD_URL:-http://192.168.20.105:5101}"
+HOST_NAME="${JIM_PROD_SSH:-hp1}"
+PROD_URL="${JIM_PROD_URL:-http://192.168.20.21:5101}"
 REMOTE_ARCHIVE="${JIM_REMOTE_ARCHIVE:-/tmp/jim-site.tar.gz}"
 REMOTE_WORK_DIR="${JIM_REMOTE_WORK_DIR:-~/jim-site-deploy}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 LOCAL_ARCHIVE="$REPO_DIR/deploy/dist/jim-site.tar.gz"
+SSH_CONFIG="$REPO_DIR/deploy/dist/jim-ssh-config"
 
 SUDO_HELP="Prod sudo permissions may need to be refreshed. Run: bash scripts/prod setup"
 
+ensure_ssh_config() {
+  mkdir -p "$(dirname "$SSH_CONFIG")"
+  cat > "$SSH_CONFIG" <<EOF
+Host hp1
+  HostName 192.168.20.21
+  User leo
+  StrictHostKeyChecking accept-new
+
+Host hp4
+  HostName 192.168.20.24
+  User leo
+  StrictHostKeyChecking accept-new
+
+Host *
+  StrictHostKeyChecking accept-new
+EOF
+}
+
 prod_ssh() {
-  ssh "$HOST_NAME" "$@"
+  ensure_ssh_config
+  ssh -F "$SSH_CONFIG" "$HOST_NAME" "$@"
 }
 
 run_remote() {
@@ -33,7 +53,8 @@ redeploy_remote() {
 package_and_copy() {
   cd "$REPO_DIR"
   bash deploy/package-for-ubuntu.sh
-  scp "$LOCAL_ARCHIVE" "$HOST_NAME:$REMOTE_ARCHIVE"
+  ensure_ssh_config
+  scp -F "$SSH_CONFIG" "$LOCAL_ARCHIVE" "$HOST_NAME:$REMOTE_ARCHIVE"
 }
 
 deploy_package() {
@@ -43,7 +64,8 @@ deploy_package() {
 
 setup_remote() {
   package_and_copy
-  ssh -t "$HOST_NAME" "rm -rf $REMOTE_WORK_DIR && mkdir -p $REMOTE_WORK_DIR && tar -xzf $REMOTE_ARCHIVE -C $REMOTE_WORK_DIR && cd $REMOTE_WORK_DIR && sudo bash deploy/ubuntu/bootstrap.sh && sudo bash deploy/apply-deploy.sh $REMOTE_ARCHIVE"
+  ensure_ssh_config
+  ssh -F "$SSH_CONFIG" -t "$HOST_NAME" "rm -rf $REMOTE_WORK_DIR && mkdir -p $REMOTE_WORK_DIR && tar -xzf $REMOTE_ARCHIVE -C $REMOTE_WORK_DIR && cd $REMOTE_WORK_DIR && sudo bash deploy/ubuntu/bootstrap.sh && sudo bash deploy/apply-deploy.sh $REMOTE_ARCHIVE"
 }
 
 show_status() {
@@ -85,10 +107,12 @@ case "$COMMAND" in
     deploy_package
     ;;
   ssh)
-    ssh "$HOST_NAME"
+    ensure_ssh_config
+    ssh -F "$SSH_CONFIG" "$HOST_NAME"
     ;;
   *)
     echo "Usage: scripts/prod [status|health|reload|repair-sudo|redeploy|setup|bootstrap|deploy|update|ssh]"
     exit 2
     ;;
 esac
+

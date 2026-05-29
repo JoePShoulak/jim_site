@@ -1,6 +1,6 @@
 # LAN Production Deployment
 
-`jim_site` runs as a static Vite build served by Nginx on the Ubuntu HP4 server.
+`jim_site` runs as a static Vite build served by Nginx on the Ubuntu HP1 server.
 Deployments use the same tar archive pattern as the other Shoulak apps: build a
 package locally, copy it to the server, then ask the server to unpack, build, and
 reload Nginx.
@@ -9,7 +9,7 @@ reload Nginx.
 
 ```text
 Browser
-  -> http://192.168.20.105:5101
+  -> http://192.168.20.21:5101
   -> Nginx static frontend
   -> /opt/jim-site/app/dist
 ```
@@ -42,12 +42,12 @@ restart
 ```
 
 `down` disables only the Jim Nginx site and reloads Nginx. It does not stop the
-shared HP4 Nginx process.
+shared HP1 Nginx process.
 
 ## First Server Setup
 
 Run this once from Git Bash on your development machine. This packages the app,
-copies it to HP4, runs bootstrap, applies the package, builds the frontend, and
+copies it to HP1, runs bootstrap, applies the package, builds the frontend, and
 reloads Nginx.
 
 ```bash
@@ -57,7 +57,7 @@ bootstrap
 The setup step may ask for the server password because it installs system config.
 After that, normal deploys should use `deploy`.
 
-If the SSH user on HP4 is not `leo`, set `DEPLOY_OPERATOR` during bootstrap on
+If the SSH user on HP1 is not `leo`, set `DEPLOY_OPERATOR` during bootstrap on
 the server:
 
 ```bash
@@ -75,7 +75,7 @@ deploy
 That command:
 
 - creates `deploy/dist/jim-site.tar.gz`
-- copies the archive to `/tmp/jim-site.tar.gz` on HP4
+- copies the archive to `/tmp/jim-site.tar.gz` on HP1
 - runs the locked-down deploy wrapper
 - replaces `/opt/jim-site/app`
 - installs dependencies
@@ -85,10 +85,10 @@ That command:
 ## Scripts
 
 - `deploy/package-for-ubuntu.sh`: creates the tar archive.
-- `deploy/source-deploy.sh`: packages and copies the archive to HP4.
+- `deploy/source-deploy.sh`: packages and copies the archive to HP1.
 - `deploy/manage.sh`: uniform `deploy`, `up`, `down`, `restart` wrapper.
 - `deploy/apply-deploy.sh`: applies an archive on the target machine.
-- `deploy/ubuntu/bootstrap.sh`: first-time HP4 setup.
+- `deploy/ubuntu/bootstrap.sh`: first-time HP1 setup.
 - `deploy/ubuntu/jim-site-apply-deploy`: no-password server-side deploy wrapper.
 - `deploy/ubuntu/jim-site-disable`: disables only the Jim Nginx site.
 - `deploy/ubuntu/install-system-config.sh`: refreshes Nginx and sudo permissions.
@@ -99,7 +99,7 @@ That command:
 Open the production site from another LAN machine:
 
 ```text
-http://192.168.20.105:5101
+http://192.168.20.21:5101
 ```
 
 Useful server checks:
@@ -109,3 +109,4 @@ sudo nginx -t
 sudo systemctl status nginx --no-pager
 sudo tail -f /var/log/nginx/error.log
 ```
+
