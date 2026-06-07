@@ -39,16 +39,19 @@ const Chapel = () => {
   return (
     <>
       <LeftAside />
-      <section>
-        <img src={chapelImage} alt="benches in light woods near a pond" />
+      <section className="chapel-section">
+        <img
+          className="chapel-hero"
+          src={chapelImage}
+          alt="benches in light woods near a pond"
+        />
         <Calendar />
       </section>
-      <Aside>
+      <Aside folkMusic>
         <img
+          className="prayer-candle"
           src={candleGif}
           alt="Flickering candle"
-          width="300px"
-          style={{ paddingBottom: "30px" }}
         />
         <h3 id="prayer-request" style={{ textAlign: "center" }}>
           Prayer Requests

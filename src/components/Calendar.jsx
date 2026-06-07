@@ -49,7 +49,7 @@ const Calendar = () => {
 
   return (
     <>
-      <h3 style={{ textAlign: "center" }}>Prayer Walk Days</h3>
+      <h3 className="prayer-walk-title">Prayer Walk Days</h3>
       <div className="calendar">
         {days.map(d => (
           <CalendarDay key={d} day={d} />

@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: 'Playball';
-  src: url('/public/fonts/Playball-Regular.ttf') format('ttf');
+  src: url('/fonts/Playball-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -17,6 +17,7 @@
 
 body {
   margin: 0px;
+  background: colors.$background;
 }
 
 html, body {
@@ -32,8 +33,10 @@ html, body {
 }
 
 h1 {
-  font-size: 60px;
+  font-size: clamp(3rem, 5.4vw, 4.5rem);
   font-family: "Playball";
+  font-weight: 700;
+  letter-spacing: 0;
 }
 
 h3 {
@@ -41,6 +44,9 @@ h3 {
   align-self: left;
   font-family: "Playball";
   color: #1F4E79;
+  font-size: clamp(1.35rem, 1.6vw, 1.75rem);
+  font-weight: 700;
+  margin: 0 0 6px;
 }
 
 a {

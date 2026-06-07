@@ -63,7 +63,7 @@ const CenterSection = () => (
 );
 
 const RightAside = () => (
-  <Aside>
+  <Aside folkMusic>
     <Image src={jim_ordained} credit="Judy Shoulak" />
     <Image src={jim_uniform} credit="Steve Emerson" />
   </Aside>

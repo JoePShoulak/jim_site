@@ -9,7 +9,7 @@ const CenterSection = () => (
   </section>
 );
 
-const RightAside = () => <Aside></Aside>;
+const RightAside = () => <Aside folkMusic></Aside>;
 
 const NotFound = () => (
   <>

@@ -1,9 +1,13 @@
+log_format jim_site_json escape=json '{"ts":"$time_iso8601","service":"jim_site","host":"$hostname","event":"nginx.request","remote_addr":"$remote_addr","method":"$request_method","path":"$request_uri","status":$status,"bytes_sent":$bytes_sent,"request_time":$request_time,"http_referer":"$http_referer","http_user_agent":"$http_user_agent"}';
+
 server {
   listen 5101;
   server_name _;
 
   root /opt/jim-site/app/dist;
   index index.html;
+  access_log /var/log/nginx/jim-site-hermes.jsonl jim_site_json;
+  error_log /var/log/nginx/jim-site-error.log warn;
 
   location / {
     try_files $uri $uri/ /index.html;
