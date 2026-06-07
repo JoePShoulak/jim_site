@@ -33,37 +33,43 @@ const UnknownPage = () => {
   return null;
 };
 
-const parseTitle = word =>
-  (word.charAt(0).toUpperCase() + word.slice(1)).replace("/", "");
+const parseTitle = word => {
+  const title = word.replace("/", "");
+  return title.charAt(0).toUpperCase() + title.slice(1);
+};
 
-// TODO: Fix that the title "flickers" top the true URL before updating correctly
 const PageTitleUpdater = () => {
   const location = useLocation().pathname;
-  document.title = `PB&T | ${location == "/" ? "Home" : parseTitle(location)}`;
+
+  useEffect(() => {
+    document.title = `PB&T | ${
+      location == "/" ? "Home" : parseTitle(location)
+    }`;
+  }, [location]);
+
+  return null;
 };
 
 const App = () => (
-  <>
+  <Router>
     <Header />
-    <Router>
-      <PageTitleUpdater />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/chapel" element={<Chapel />} />
-          <Route path="/writings" element={<Writings />} />
-          <Route path="/hymns" element={<Hymns />} />
-          <Route path="/diaconate" element={<Diaconate />} />
-          <Route path="/disclaimers" element={<Disclaimers />} />
-          <Route path="/contact" element={<Contact />} />
+    <PageTitleUpdater />
+    <main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/chapel" element={<Chapel />} />
+        <Route path="/writings" element={<Writings />} />
+        <Route path="/hymns" element={<Hymns />} />
+        <Route path="/diaconate" element={<Diaconate />} />
+        <Route path="/disclaimers" element={<Disclaimers />} />
+        <Route path="/contact" element={<Contact />} />
 
-          <Route path="*" element={<UnknownPage />} />
-          <Route path="/not_found" element={<NotFound />} />
-        </Routes>
-      </main>
-    </Router>
+        <Route path="*" element={<UnknownPage />} />
+        <Route path="/not_found" element={<NotFound />} />
+      </Routes>
+    </main>
     <Footer />
-  </>
+  </Router>
 );
 
 export default App;

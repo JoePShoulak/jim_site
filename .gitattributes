@@ -1,0 +1,6 @@
+*.sh text eol=lf
+deploy/ubuntu/*.nginx text eol=lf
+deploy/ubuntu/jim-site-apply-deploy text eol=lf
+deploy/ubuntu/jim-site-disable text eol=lf
+deploy/ubuntu/jim-site-issue-certs text eol=lf
+scripts/prod text eol=lf

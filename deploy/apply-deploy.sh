@@ -23,6 +23,10 @@ fi
 install -d -o "$DEPLOY_USER" -g "$DEPLOY_USER" "$APP_ROOT" "$APP_DIR"
 find "$APP_DIR" -mindepth 1 -maxdepth 1 -exec rm -rf -- {} +
 tar -xzf "$ARCHIVE" -C "$APP_DIR"
+install -m 0755 "$APP_DIR/deploy/ubuntu/install-system-config.sh" /usr/local/sbin/jim-site-install-system-config
+install -m 0755 "$APP_DIR/deploy/ubuntu/jim-site-apply-deploy" /usr/local/sbin/jim-site-apply-deploy
+install -m 0755 "$APP_DIR/deploy/ubuntu/jim-site-disable" /usr/local/sbin/jim-site-disable
+install -m 0755 "$APP_DIR/deploy/ubuntu/jim-site-issue-certs" /usr/local/sbin/jim-site-issue-certs
 chown -R "$DEPLOY_USER:$DEPLOY_USER" "$APP_ROOT"
 
 sudo -u "$DEPLOY_USER" bash -lc "cd '$APP_DIR' && bash deploy/ubuntu/deploy.sh"

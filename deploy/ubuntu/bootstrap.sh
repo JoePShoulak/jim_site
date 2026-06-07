@@ -32,11 +32,13 @@ install -d -o "$DEPLOY_USER" -g "$DEPLOY_USER" "$APP_ROOT" "$APP_DIR"
 install -m 0755 "$SCRIPT_DIR/install-system-config.sh" /usr/local/sbin/jim-site-install-system-config
 install -m 0755 "$SCRIPT_DIR/jim-site-apply-deploy" /usr/local/sbin/jim-site-apply-deploy
 install -m 0755 "$SCRIPT_DIR/jim-site-disable" /usr/local/sbin/jim-site-disable
+install -m 0755 "$SCRIPT_DIR/jim-site-issue-certs" /usr/local/sbin/jim-site-issue-certs
 
 cat >/etc/sudoers.d/jim-site-deploy <<EOF
 $DEPLOY_USER ALL=(root) NOPASSWD: /usr/local/sbin/jim-site-install-system-config, /usr/local/sbin/jim-site-disable, /bin/systemctl reload nginx, /usr/bin/systemctl reload nginx, /usr/sbin/nginx -t
 $DEPLOY_OPERATOR ALL=(root) NOPASSWD: /usr/local/sbin/jim-site-apply-deploy /tmp/jim-site.tar.gz
-$DEPLOY_OPERATOR ALL=(root) NOPASSWD: /usr/local/sbin/jim-site-install-system-config, /usr/local/sbin/jim-site-disable, /bin/systemctl reload nginx, /usr/bin/systemctl reload nginx, /usr/sbin/nginx -t
+$DEPLOY_OPERATOR ALL=(root) NOPASSWD: /usr/local/sbin/jim-site-install-system-config, /usr/local/sbin/jim-site-install-system-config --issue-certs, /usr/local/sbin/jim-site-disable, /usr/local/sbin/jim-site-issue-certs, /usr/local/sbin/jim-site-issue-certs *, /usr/local/sbin/jim-site-issue-certs --status, /bin/systemctl reload nginx, /usr/bin/systemctl reload nginx, /usr/sbin/nginx -t
+$DEPLOY_OPERATOR ALL=(root) NOPASSWD: /usr/bin/tail -n 0 -F /var/log/nginx/jim-site-error.log /var/log/nginx/jim-site-hermes.jsonl /var/log/nginx/jim-site-public-error.log /var/log/nginx/jim-site-public.jsonl /var/log/nginx/jim-site-public-origin-error.log /var/log/nginx/jim-site-public-origin.jsonl /var/log/nginx/jim-site-public-ssl-error.log /var/log/nginx/jim-site-public-ssl.jsonl, /usr/bin/tail -n 120 /var/log/nginx/jim-site-error.log /var/log/nginx/jim-site-hermes.jsonl /var/log/nginx/jim-site-public-error.log /var/log/nginx/jim-site-public.jsonl /var/log/nginx/jim-site-public-origin-error.log /var/log/nginx/jim-site-public-origin.jsonl /var/log/nginx/jim-site-public-ssl-error.log /var/log/nginx/jim-site-public-ssl.jsonl
 EOF
 chmod 0440 /etc/sudoers.d/jim-site-deploy
 visudo -cf /etc/sudoers.d/jim-site-deploy

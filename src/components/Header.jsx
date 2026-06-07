@@ -1,13 +1,14 @@
 import basin from "/images/original/basin.png";
 import buttonProps from "../data/buttonProps.json";
+import { NavLink } from "react-router-dom";
 
-const NavButton = ({ link, label, description, isActive }) => (
-  <a
-    href={isActive ? undefined : link}
+const NavButton = ({ link, label, description }) => (
+  <NavLink
+    to={link}
     title={description ?? label ?? link}
-    className={isActive ? "active" : ""}>
+    className={({ isActive }) => (isActive ? "active" : "")}>
     {label ?? link}
-  </a>
+  </NavLink>
 );
 
 const NavBar = () => (
@@ -18,7 +19,6 @@ const NavBar = () => (
         link={link}
         label={label}
         description={description}
-        isActive={link === window.location.pathname}
       />
     ))}
   </nav>

@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+APP_DIR="${APP_DIR:-/opt/jim-site/app}"
+WEBROOT="${JIM_CERT_WEBROOT:-$APP_DIR/dist}"
+PRIMARY_DOMAIN="${JIM_CERT_DOMAIN:-pitcherbasinandtowel.com}"
+ALT_DOMAIN="${JIM_CERT_ALT_DOMAIN:-www.pitcherbasinandtowel.com}"
+EMAIL="${JIM_CERTBOT_EMAIL:-joep@shoulak.org}"
+NGINX_ONLY=0
+STATUS_ONLY=0
+CERT_LIVE_DIR="/etc/letsencrypt/live/$PRIMARY_DOMAIN"
+SSL_SITE="/etc/nginx/sites-available/jim-site-ssl"
+
+case "${1:-}" in
+  --nginx-only)
+    NGINX_ONLY=1
+    ;;
+  --status)
+    STATUS_ONLY=1
+    ;;
+  "")
+    ;;
+  *)
+    EMAIL="$1"
+    ;;
+esac
+
+if [[ "${EUID}" -ne 0 ]]; then
+  echo "Run this script with sudo/root on the Jim site host." >&2
+  exit 77
+fi
+
+if [[ ! -d "$WEBROOT" ]]; then
+  echo "Webroot not found: $WEBROOT" >&2
+  echo "Deploy the app before issuing the certificate." >&2
+  exit 66
+fi
+
+if [[ "$STATUS_ONLY" == "1" ]]; then
+  if [[ -f "$CERT_LIVE_DIR/fullchain.pem" ]]; then
+    openssl x509 -in "$CERT_LIVE_DIR/fullchain.pem" -noout -dates
+  else
+    echo missing
+  fi
+  exit 0
+fi
+
+write_nginx_ssl_site() {
+  if [[ ! -f "$CERT_LIVE_DIR/fullchain.pem" || ! -f "$CERT_LIVE_DIR/privkey.pem" ]]; then
+    echo "Certificate files are missing under $CERT_LIVE_DIR." >&2
+    exit 66
+  fi
+
+  cat >"$SSL_SITE" <<EOF
+server {
+  listen 443 ssl;
+  http2 on;
+  server_name $PRIMARY_DOMAIN $ALT_DOMAIN;
+
+  root $WEBROOT;
+  index index.html;
+  access_log /var/log/nginx/jim-site-public-ssl.jsonl jim_site_json;
+  error_log /var/log/nginx/jim-site-public-ssl-error.log warn;
+
+  ssl_certificate $CERT_LIVE_DIR/fullchain.pem;
+  ssl_certificate_key $CERT_LIVE_DIR/privkey.pem;
+  ssl_protocols TLSv1.2 TLSv1.3;
+  ssl_session_cache shared:jim_site_ssl:10m;
+  ssl_session_timeout 1d;
+
+  location / {
+    try_files \$uri \$uri/ /index.html;
+  }
+}
+EOF
+
+  ln -sfn "$SSL_SITE" /etc/nginx/sites-enabled/jim-site-ssl
+}
+
+if [[ "$NGINX_ONLY" == "0" && -f "$CERT_LIVE_DIR/fullchain.pem" && -f "$CERT_LIVE_DIR/privkey.pem" ]]; then
+  NGINX_ONLY=1
+fi
+
+if [[ "$NGINX_ONLY" == "0" ]]; then
+  if ! command -v certbot >/dev/null 2>&1; then
+    apt-get update
+    apt-get install -y certbot
+  fi
+
+  args=(certbot certonly --non-interactive --webroot -w "$WEBROOT" --agree-tos --no-eff-email --expand -d "$PRIMARY_DOMAIN" -d "$ALT_DOMAIN")
+
+  if [[ -n "$EMAIL" ]]; then
+    args+=(--email "$EMAIL")
+  else
+    args+=(--register-unsafely-without-email)
+  fi
+
+  timeout 180 "${args[@]}"
+fi
+
+write_nginx_ssl_site
+nginx -t
+systemctl reload nginx

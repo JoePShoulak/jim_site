@@ -4,7 +4,7 @@
 @font-face {
   font-family: 'Playball';
   src: url('/fonts/Playball-Regular.ttf') format('truetype');
-  font-weight: normal;
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -49,9 +49,9 @@ header {
 
   h3 {
     color: #ffc64b;
-    font-family: "Playball";
+    font-family: "Roboto", sans-serif;
     font-size: clamp(1rem, 1.35vw, 1.3rem);
-    font-weight: 700;
+    font-weight: 400;
     margin-top: 0;
     padding-top: 0px;
     margin-bottom: 0;
@@ -81,6 +81,15 @@ nav {
     &:hover,
     &.active {
       background-color: color.scale(colors.$background, $lightness: 25%);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid colors.$highlight;
+      outline-offset: -4px;
     }
 
     &.active {
@@ -391,7 +400,7 @@ footer {
     justify-content: center;
     font-family: Playball;
     font-size: clamp(0.58rem, 0.62vw, 0.78rem);
-    font-weight: bold;
+    font-weight: 400;
     min-height: 1.9em;
     padding: 2px 4px;
     box-sizing: border-box;
@@ -615,7 +624,7 @@ img {
 
 .entry-title {
   font-size: 1em;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .entry-subtitle {
