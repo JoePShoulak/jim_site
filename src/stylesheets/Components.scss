@@ -349,7 +349,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: #fff;
 
   h2 {
@@ -560,10 +560,10 @@ img {
 .book-wrapper {
   position: relative;
   flex: 0 1 auto;
-  width: min(100%, 880px, calc((100vh - 170px) * 1.3167));
+  width: min(100%, 1040px, calc((100vh - 145px) * 1.3167));
   aspect-ratio: 316 / 240;
   container-type: inline-size;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .writing-image {
@@ -589,19 +589,27 @@ img {
   margin: 0;
   padding: 0;
 
-  font-size: clamp(0.72rem, 3.35cqw, 1.32rem);
+  --book-text-width-scale: 1.14;
+  font-size: clamp(0.72rem, 3.05cqw, 1.58rem);
   line-height: 1;
 }
 
 @supports not (font-size: 1cqw) {
   .book-list {
-    font-size: clamp(0.72rem, 1.18vw, 1.2rem);
+    font-size: clamp(0.72rem, 1.08vw, 1.5rem);
+  }
+}
+
+@container (min-width: 940px) {
+  .book-list {
+    font-size: clamp(0.72rem, 3.05cqw, 2rem);
   }
 }
 
 .book-list li {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
   min-height: 0;
 
@@ -612,16 +620,19 @@ img {
 
 .entry-title,
 .entry-subtitle {
-  display: block;
+  display: inline-block;
+  transform: scaleX(var(--book-text-width-scale));
+  transform-origin: left center;
 }
 
 .entry-title {
   font-size: 1em;
   font-weight: 400;
+  white-space: nowrap;
 }
 
 .entry-subtitle {
-  font-size: 0.65em;
+  font-size: 0.5em;
   line-height: 0.95;
   margin-top: 0.15em;
 }
@@ -629,15 +640,15 @@ img {
 .left-page {
   padding-top: 14%;
   padding-bottom: 15%;
-  padding-left: 18%;
+  padding-left: 13%;
   padding-right: 8%;
 }
 
 .right-page {
   padding-top: 14%;
   padding-bottom: 15%;
-  padding-left: 10%;
-  padding-right: 16%;
+  padding-left: 9%;
+  padding-right: 8%;
 }
 
 .page-entry {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import candleGif from "/images/original/candle.gif";
-import chapelImage from "/images/original/chapel_main.jpg";
+import chapelImage from "/images/original/path-in-iowa.jpeg?v=20260607";
 import logo from "/images/original/logo.png";
 
 import { Calendar } from "../components/Calendar";
@@ -43,7 +43,7 @@ const Chapel = () => {
         <img
           className="chapel-hero"
           src={chapelImage}
-          alt="benches in light woods near a pond"
+          alt="tree-lined gravel path in Iowa"
         />
         <Calendar />
       </section>
