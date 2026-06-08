@@ -1,13 +1,6 @@
 @use "./colors.scss";
 @use 'sass:color';
 
-@font-face {
-  font-family: 'Playball';
-  src: url('/fonts/Playball-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-
 dark-banner {
   width: 100%;
   background-color: colors.$background;

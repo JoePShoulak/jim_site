@@ -44,6 +44,8 @@ app.get("*", (req, res) => {
 });
 
 app.use((error, req, res, _next) => {
+  void _next;
+
   logEvent("http.error", {
     method: req.method,
     path: req.originalUrl,

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Modal from "./Modal";
 
 const TabbedSections = ({ tabs }) => {
   const [activeTab, setActiveTab] = useState(0);
@@ -23,21 +24,13 @@ const TabbedSections = ({ tabs }) => {
 const TabContent = ({ content, img, imgAlt, className }) => {
   const [selectedItem, setSelectedItem] = useState(null);
 
-  const ModalLink = ({ item }) => {
-    const [hovered, setHovered] = useState(className);
-
-    return (
-      <p>
-        <a
-          onClick={() => setSelectedItem(item)}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-          className={className}>
-          {item.title}
-        </a>
-      </p>
-    );
-  };
+  const ModalLink = ({ item }) => (
+    <p>
+      <a onClick={() => setSelectedItem(item)} className={className}>
+        {item.title}
+      </a>
+    </p>
+  );
 
   return (
     <div className="two-column-content">
