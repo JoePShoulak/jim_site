@@ -54,7 +54,8 @@ const ContactForm = ({ isOpen, onClose, defaultSubject = "" }) => {
         setErrorMessage("");
         onClose();
       },
-      _error => {
+      error => {
+        console.error(error);
         setIsSending(false);
         setErrorMessage("An error occurred. Please try again later.");
       }

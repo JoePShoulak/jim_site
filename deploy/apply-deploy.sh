@@ -3,7 +3,7 @@ set -Eeuo pipefail
 
 ARCHIVE="${1:-/tmp/jim-site.tar.gz}"
 APP_NAME="${APP_NAME:-jim-site}"
-DEPLOY_USER="${DEPLOY_USER:-ksp}"
+DEPLOY_USER="${DEPLOY_USER:-leo}"
 APP_ROOT="${APP_ROOT:-/opt/$APP_NAME}"
 APP_DIR="${APP_DIR:-$APP_ROOT/app}"
 

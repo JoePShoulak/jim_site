@@ -2,7 +2,7 @@
 set -Eeuo pipefail
 
 APP_NAME="${APP_NAME:-jim-site}"
-DEPLOY_USER="${DEPLOY_USER:-ksp}"
+DEPLOY_USER="${DEPLOY_USER:-leo}"
 DEPLOY_OPERATOR="${DEPLOY_OPERATOR:-leo}"
 APP_ROOT="${APP_ROOT:-/opt/$APP_NAME}"
 APP_DIR="${APP_DIR:-$APP_ROOT/app}"

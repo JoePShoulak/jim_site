@@ -2,7 +2,7 @@
 set -Eeuo pipefail
 
 APP_DIR="${APP_DIR:-/opt/jim-site/app}"
-DEPLOY_USER="${DEPLOY_USER:-ksp}"
+DEPLOY_USER="${DEPLOY_USER:-leo}"
 DEPLOY_OPERATOR="${DEPLOY_OPERATOR:-leo}"
 ISSUE_CERTS=0
 

@@ -18,7 +18,7 @@ Key paths and identities:
 
 - app directory: `/opt/jim-site/app`
 - deploy archive: `/tmp/jim-site.tar.gz`
-- deploy user that owns the app files: `ksp`
+- deploy user that owns the app files: `leo`
 - passwordless deploy operator: `leo` by default
 - Nginx site file: `/etc/nginx/sites-available/jim-site`
 - HTTPS site file: `/etc/nginx/sites-available/jim-site-ssl`
@@ -85,6 +85,32 @@ That command:
 - installs dependencies
 - builds the Vite app
 - verifies and reloads Nginx
+
+## Contact Form EmailJS Config
+
+The contact form is built by Vite, so the EmailJS values must exist at build
+time. Production deploys read them from a persistent server file outside the
+replaced app directory:
+
+```bash
+/opt/jim-site/emailjs.env
+```
+
+Create or update that file on HP1 before deploying:
+
+```bash
+sudo install -d -o leo -g leo /opt/jim-site
+sudo tee /opt/jim-site/emailjs.env >/dev/null <<'EOF'
+VITE_EMAILJS_SERVICE_ID=service_xxxxxxx
+VITE_EMAILJS_TEMPLATE_ID=template_xxxxxxx
+VITE_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxxxxx
+EOF
+sudo chown leo:leo /opt/jim-site/emailjs.env
+sudo chmod 0600 /opt/jim-site/emailjs.env
+```
+
+Find those values in the EmailJS dashboard. If any of the three values are
+missing, the deploy build exits before publishing a broken contact form.
 
 ## Operator Commands
 
