@@ -86,11 +86,11 @@ That command:
 - builds the Vite app
 - verifies and reloads Nginx
 
-## Contact Form EmailJS Config
+## Production Build Config
 
-The contact form is built by Vite, so the EmailJS values must exist at build
-time. Production deploys read them from a persistent server file outside the
-replaced app directory:
+The contact form and Google Analytics tag are built by Vite, so their values
+must exist at build time. Production deploys read them from a persistent server
+file outside the replaced app directory:
 
 ```bash
 /opt/jim-site/emailjs.env
@@ -104,6 +104,7 @@ sudo tee /opt/jim-site/emailjs.env >/dev/null <<'EOF'
 VITE_EMAILJS_SERVICE_ID=service_xxxxxxx
 VITE_EMAILJS_TEMPLATE_ID=template_xxxxxxx
 VITE_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxxxxx
+VITE_GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX
 EOF
 sudo chown leo:leo /opt/jim-site/emailjs.env
 sudo chmod 0600 /opt/jim-site/emailjs.env
@@ -111,6 +112,26 @@ sudo chmod 0600 /opt/jim-site/emailjs.env
 
 Find those values in the EmailJS dashboard. If any of the three values are
 missing, the deploy build exits before publishing a broken contact form.
+
+Find the Google Analytics value in the GA4 web data stream. It is the
+Measurement ID that starts with `G-`. The analytics value is optional for local
+builds, but production deploys need it in `/opt/jim-site/emailjs.env` before the
+deploy build runs.
+
+To add only Google Analytics to an existing HP1 config without rewriting the
+EmailJS values:
+
+```bash
+ssh hp1 'sudo sed -i "/^VITE_GOOGLE_ANALYTICS_ID=/d" /opt/jim-site/emailjs.env && echo "VITE_GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX" | sudo tee -a /opt/jim-site/emailjs.env >/dev/null && sudo chown leo:leo /opt/jim-site/emailjs.env && sudo chmod 0600 /opt/jim-site/emailjs.env'
+deploy hp1
+```
+
+After the deploy finishes, verify the built page includes the GA tag:
+
+```bash
+curl -fsS https://pitcherbasinandtowel.com | grep -o 'assets/index-[^"]*\.js' | head -n 1
+curl -fsS "https://pitcherbasinandtowel.com/$(curl -fsS https://pitcherbasinandtowel.com | grep -o 'assets/index-[^"]*\.js' | head -n 1)" | grep 'googletagmanager.com/gtag/js'
+```
 
 ## Operator Commands
 

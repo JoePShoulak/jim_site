@@ -22,6 +22,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { trackPageView } from "./analytics";
 
 const UnknownPage = () => {
   const navigate = useNavigate();
@@ -38,13 +39,29 @@ const parseTitle = word => {
   return title.charAt(0).toUpperCase() + title.slice(1);
 };
 
+const getPageTitle = pathname =>
+  `PB&T | ${pathname == "/" ? "Home" : parseTitle(pathname)}`;
+
 const PageTitleUpdater = () => {
-  const location = useLocation().pathname;
+  const pathname = useLocation().pathname;
 
   useEffect(() => {
-    document.title = `PB&T | ${
-      location == "/" ? "Home" : parseTitle(location)
-    }`;
+    document.title = getPageTitle(pathname);
+  }, [pathname]);
+
+  return null;
+};
+
+const AnalyticsTracker = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const path = `${location.pathname}${location.search}${location.hash}`;
+
+    trackPageView({
+      path,
+      title: getPageTitle(location.pathname),
+    });
   }, [location]);
 
   return null;
@@ -54,6 +71,7 @@ const App = () => (
   <Router>
     <Header />
     <PageTitleUpdater />
+    <AnalyticsTracker />
     <main>
       <Routes>
         <Route path="/" element={<Home />} />
